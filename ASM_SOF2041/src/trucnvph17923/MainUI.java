@@ -5,6 +5,10 @@
  */
 package trucnvph17923;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Nguyen Truc
@@ -16,6 +20,25 @@ public class MainUI extends javax.swing.JFrame {
      */
     public MainUI() {
         initComponents();
+        // Change default icon 
+        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+        this.setIconImage(icon.getImage());
+        // Setting clock
+        new Thread() { //Start - Create a clock
+            public void run() {
+                SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss aa");
+                while (true) {
+                    Date d = new Date();
+                    lblcock.setText(sdf.format(d));
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception ex) {
+                        break;
+                    }
+                }
+            }
+        }.start();
+        //End - Create a clock
     }
 
     /**
@@ -29,7 +52,6 @@ public class MainUI extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
         jButton2 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jButton3 = new javax.swing.JButton();
@@ -41,6 +63,7 @@ public class MainUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        lblcock = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuhethong = new javax.swing.JMenu();
@@ -51,8 +74,22 @@ public class MainUI extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItem3 = new javax.swing.JMenuItem();
         mnuquanly = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem11 = new javax.swing.JMenuItem();
         mnuthongke = new javax.swing.JMenu();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         mnutrogiup = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LẬP TRÌNH CITY EDUCATION");
@@ -67,7 +104,6 @@ public class MainUI extends javax.swing.JFrame {
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton1);
-        jToolBar1.add(jSeparator1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Stop.png"))); // NOI18N
         jButton2.setText("Kết thúc");
@@ -136,12 +172,17 @@ public class MainUI extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1320, 590));
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblcock.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblcock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Alarm.png"))); // NOI18N
+        lblcock.setText("05:06:08 PM");
+        jPanel2.add(lblcock, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 0, 120, 50));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Alarm.png"))); // NOI18N
-        jLabel2.setText("05:06:08 PM");
-        jPanel2.add(jLabel2);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Info.png"))); // NOI18N
+        jLabel2.setText("Hệ quản lý đào tạo");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 1320, 50));
 
@@ -171,12 +212,72 @@ public class MainUI extends javax.swing.JFrame {
         jMenuBar1.add(mnuhethong);
 
         mnuquanly.setText("Quản lý");
+
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lists.png"))); // NOI18N
+        jMenuItem7.setText("Chuyên đề");
+        mnuquanly.add(jMenuItem7);
+
+        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Certificate.png"))); // NOI18N
+        jMenuItem8.setText("Khóa học");
+        mnuquanly.add(jMenuItem8);
+
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Conference.png"))); // NOI18N
+        jMenuItem9.setText("Người học");
+        mnuquanly.add(jMenuItem9);
+
+        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User.png"))); // NOI18N
+        jMenuItem10.setText("Học viên");
+        mnuquanly.add(jMenuItem10);
+        mnuquanly.add(jSeparator7);
+
+        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User group.png"))); // NOI18N
+        jMenuItem11.setText("Nhân viên");
+        mnuquanly.add(jMenuItem11);
+
         jMenuBar1.add(mnuquanly);
 
         mnuthongke.setText("Thống kê");
+
+        jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Card file.png"))); // NOI18N
+        jMenuItem12.setText("Bảng điểm");
+        mnuthongke.add(jMenuItem12);
+        mnuthongke.add(jSeparator8);
+
+        jMenuItem14.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Clien list.png"))); // NOI18N
+        jMenuItem14.setText("Lượng người học");
+        mnuthongke.add(jMenuItem14);
+
+        jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Bar chart.png"))); // NOI18N
+        jMenuItem13.setText("Điểm chuyên đề");
+        mnuthongke.add(jMenuItem13);
+
+        jMenuItem15.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Dollar.png"))); // NOI18N
+        jMenuItem15.setText("Doanh thu");
+        mnuthongke.add(jMenuItem15);
+
         jMenuBar1.add(mnuthongke);
 
         mnutrogiup.setText("Trợ giúp");
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Globe.png"))); // NOI18N
+        jMenuItem5.setText("Hướng dẫn sử dụng");
+        mnutrogiup.add(jMenuItem5);
+        mnutrogiup.add(jSeparator5);
+
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Brick house.png"))); // NOI18N
+        jMenuItem6.setText("Giới thiệu sản phẩm");
+        mnutrogiup.add(jMenuItem6);
+
         jMenuBar1.add(mnutrogiup);
 
         setJMenuBar(jMenuBar1);
@@ -236,17 +337,31 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblcock;
     private javax.swing.JMenu mnuhethong;
     private javax.swing.JMenu mnuquanly;
     private javax.swing.JMenu mnuthongke;
