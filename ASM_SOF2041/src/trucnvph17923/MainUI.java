@@ -20,6 +20,7 @@ public class MainUI extends javax.swing.JFrame {
      */
     public MainUI() {
         initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
         ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
         this.setIconImage(icon.getImage());
@@ -76,10 +77,10 @@ public class MainUI extends javax.swing.JFrame {
         mnuquanly = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        mnulearner = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        mnustaff = new javax.swing.JMenuItem();
         mnuthongke = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
@@ -223,10 +224,15 @@ public class MainUI extends javax.swing.JFrame {
         jMenuItem8.setText("Khóa học");
         mnuquanly.add(jMenuItem8);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Conference.png"))); // NOI18N
-        jMenuItem9.setText("Người học");
-        mnuquanly.add(jMenuItem9);
+        mnulearner.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_MASK));
+        mnulearner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Conference.png"))); // NOI18N
+        mnulearner.setText("Người học");
+        mnulearner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnulearnerActionPerformed(evt);
+            }
+        });
+        mnuquanly.add(mnulearner);
 
         jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User.png"))); // NOI18N
@@ -234,10 +240,15 @@ public class MainUI extends javax.swing.JFrame {
         mnuquanly.add(jMenuItem10);
         mnuquanly.add(jSeparator7);
 
-        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User group.png"))); // NOI18N
-        jMenuItem11.setText("Nhân viên");
-        mnuquanly.add(jMenuItem11);
+        mnustaff.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_MASK));
+        mnustaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User group.png"))); // NOI18N
+        mnustaff.setText("Nhân viên");
+        mnustaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnustaffActionPerformed(evt);
+            }
+        });
+        mnuquanly.add(mnustaff);
 
         jMenuBar1.add(mnuquanly);
 
@@ -290,6 +301,16 @@ public class MainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void mnustaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnustaffActionPerformed
+        new ManaStaff().setVisible(true);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_mnustaffActionPerformed
+
+    private void mnulearnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnulearnerActionPerformed
+        new ManaLearner().setVisible(true);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_mnulearnerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -338,7 +359,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
@@ -350,7 +370,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar.Separator jSeparator2;
@@ -363,7 +382,9 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblcock;
     private javax.swing.JMenu mnuhethong;
+    private javax.swing.JMenuItem mnulearner;
     private javax.swing.JMenu mnuquanly;
+    private javax.swing.JMenuItem mnustaff;
     private javax.swing.JMenu mnuthongke;
     private javax.swing.JMenu mnutrogiup;
     // End of variables declaration//GEN-END:variables

@@ -14,7 +14,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Nguyen Truc
  */
 public class ProgressBarUI extends javax.swing.JFrame {
 

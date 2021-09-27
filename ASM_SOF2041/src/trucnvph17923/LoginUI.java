@@ -5,7 +5,9 @@
  */
 package trucnvph17923;
 
+import java.sql.Connection;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,9 +15,10 @@ import javax.swing.ImageIcon;
  */
 public class LoginUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginUI
-     */
+    private String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=laptrinhedu";
+    private static String usersName = "sa";
+    private static String password = "vip123456789";
+    private Connection conn;
     public LoginUI() {
         initComponents();
         // Change default icon 
