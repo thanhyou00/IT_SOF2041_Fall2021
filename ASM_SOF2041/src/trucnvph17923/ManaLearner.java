@@ -5,6 +5,7 @@
  */
 package trucnvph17923;
 
+import java.sql.Connection;
 import javax.swing.ImageIcon;
 
 /**
@@ -13,9 +14,10 @@ import javax.swing.ImageIcon;
  */
 public class ManaLearner extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ManaStaff
-     */
+    private String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=laptrinhedu";
+    private static String usersName = "sa";
+    private static String password = "vip123456789";
+    private Connection conn;
     public ManaLearner() {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
