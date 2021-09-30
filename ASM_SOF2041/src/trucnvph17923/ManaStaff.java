@@ -7,6 +7,7 @@ package trucnvph17923;
 
 import java.sql.Connection;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,13 +18,26 @@ public class ManaStaff extends javax.swing.JFrame {
     private String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=laptrinhedu";
     private static String usersName = "sa";
     private static String password = "vip123456789";
+    private DefaultTableModel _model = new DefaultTableModel();
+     private int _index = 0;
     private Connection conn;
+    static {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public ManaStaff() {
         initComponents();
+        _model = (DefaultTableModel) tblnhanvien.getModel();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
         ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
         this.setIconImage(icon.getImage());
+        loadDatatoTable();
+        _index = 0;
+        showForm();
     }
 
     /**
@@ -60,7 +74,7 @@ public class ManaStaff extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblnhanvien = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QUẢN LÝ NHÂN VIÊN");
@@ -209,7 +223,7 @@ public class ManaStaff extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("CẬP NHẬT", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblnhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -225,7 +239,7 @@ public class ManaStaff extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblnhanvien);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -332,10 +346,18 @@ public class ManaStaff extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable tblnhanvien;
     // End of variables declaration//GEN-END:variables
+
+    private void loadDatatoTable() {
+        
+    }
+
+    private void showForm() {
+        
+    }
 }

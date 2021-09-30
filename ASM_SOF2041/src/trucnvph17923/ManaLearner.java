@@ -18,6 +18,13 @@ public class ManaLearner extends javax.swing.JFrame {
     private static String usersName = "sa";
     private static String password = "vip123456789";
     private Connection conn;
+    static {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public ManaLearner() {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -66,7 +73,7 @@ public class ManaLearner extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblnguoihoc = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jTextField5 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
@@ -241,7 +248,7 @@ public class ManaLearner extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("CẬP NHẬT", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblnguoihoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -257,7 +264,7 @@ public class ManaLearner extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblnguoihoc);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TÌM KIẾM", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -399,7 +406,6 @@ public class ManaLearner extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -408,5 +414,6 @@ public class ManaLearner extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTable tblnguoihoc;
     // End of variables declaration//GEN-END:variables
 }

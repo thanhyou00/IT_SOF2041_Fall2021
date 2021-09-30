@@ -19,6 +19,13 @@ public class LoginUI extends javax.swing.JFrame {
     private static String usersName = "sa";
     private static String password = "vip123456789";
     private Connection conn;
+    static {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public LoginUI() {
         initComponents();
         // Change default icon 
