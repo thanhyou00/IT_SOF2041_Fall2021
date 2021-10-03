@@ -49,14 +49,14 @@
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jPasswordField3" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtmatkhaumoi" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="412" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" linkSize="1" min="-2" pref="285" max="-2" attributes="0"/>
+                              <Component id="txtmanv" linkSize="1" min="-2" pref="285" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -66,7 +66,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPasswordField1" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtmatkhau" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -75,7 +75,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="tbnhuy" linkSize="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jPasswordField2" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtmatkhaumoi2" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -94,8 +94,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField1" linkSize="2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jPasswordField1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtmanv" linkSize="2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="txtmatkhau" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -104,8 +104,8 @@
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jPasswordField3" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPasswordField2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtmatkhaumoi" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtmatkhaumoi2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="66" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -173,19 +173,19 @@
             <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u hi&#x1ec7;n t&#x1ea1;i"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtmanv">
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="txtmatkhau">
           <Properties>
             <Property name="echoChar" type="char" value="&#x2022;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+        <Component class="javax.swing.JPasswordField" name="txtmatkhaumoi2">
           <Properties>
             <Property name="echoChar" type="char" value="&#x2022;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField3">
+        <Component class="javax.swing.JPasswordField" name="txtmatkhaumoi">
           <Properties>
             <Property name="echoChar" type="char" value="&#x2022;"/>
           </Properties>
@@ -197,6 +197,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ed3;ng &#xfd;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnokeActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="tbnhuy">
           <Properties>
@@ -205,6 +208,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="H&#x1ee7;y b&#x1ecf;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbnhuyActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

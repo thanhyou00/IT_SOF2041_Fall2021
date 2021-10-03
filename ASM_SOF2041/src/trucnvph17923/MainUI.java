@@ -1,6 +1,11 @@
 
 package trucnvph17923;
 
+import Utils.Auth;
+import Utils.MsgBox;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
@@ -64,12 +69,12 @@ public class MainUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuhethong = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnulogin = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mnuketthuc = new javax.swing.JMenuItem();
         mnuquanly = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -84,7 +89,7 @@ public class MainUI extends javax.swing.JFrame {
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         mnutrogiup = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        mnuhd = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem6 = new javax.swing.JMenuItem();
 
@@ -100,6 +105,11 @@ public class MainUI extends javax.swing.JFrame {
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Stop.png"))); // NOI18N
@@ -149,6 +159,11 @@ public class MainUI extends javax.swing.JFrame {
         jButton7.setFocusable(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton7);
 
         getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1320, 50));
@@ -185,14 +200,24 @@ public class MainUI extends javax.swing.JFrame {
 
         mnuhethong.setText("Hệ thống");
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Key.png"))); // NOI18N
-        jMenuItem2.setText("Đăng nhập");
-        mnuhethong.add(jMenuItem2);
+        mnulogin.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        mnulogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Key.png"))); // NOI18N
+        mnulogin.setText("Đăng nhập");
+        mnulogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuloginActionPerformed(evt);
+            }
+        });
+        mnuhethong.add(mnulogin);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Exit.png"))); // NOI18N
         jMenuItem1.setText("Đăng xuất");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         mnuhethong.add(jMenuItem1);
         mnuhethong.add(jSeparator3);
 
@@ -206,10 +231,15 @@ public class MainUI extends javax.swing.JFrame {
         mnuhethong.add(jMenuItem4);
         mnuhethong.add(jSeparator4);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Stop.png"))); // NOI18N
-        jMenuItem3.setText("Kết thúc");
-        mnuhethong.add(jMenuItem3);
+        mnuketthuc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
+        mnuketthuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Stop.png"))); // NOI18N
+        mnuketthuc.setText("Kết thúc");
+        mnuketthuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuketthucActionPerformed(evt);
+            }
+        });
+        mnuhethong.add(mnuketthuc);
 
         jMenuBar1.add(mnuhethong);
 
@@ -258,6 +288,11 @@ public class MainUI extends javax.swing.JFrame {
         jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Card file.png"))); // NOI18N
         jMenuItem12.setText("Bảng điểm");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         mnuthongke.add(jMenuItem12);
         mnuthongke.add(jSeparator8);
 
@@ -280,10 +315,15 @@ public class MainUI extends javax.swing.JFrame {
 
         mnutrogiup.setText("Trợ giúp");
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Globe.png"))); // NOI18N
-        jMenuItem5.setText("Hướng dẫn sử dụng");
-        mnutrogiup.add(jMenuItem5);
+        mnuhd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        mnuhd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Globe.png"))); // NOI18N
+        mnuhd.setText("Hướng dẫn sử dụng");
+        mnuhd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuhdActionPerformed(evt);
+            }
+        });
+        mnutrogiup.add(mnuhd);
         mnutrogiup.add(jSeparator5);
 
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Brick house.png"))); // NOI18N
@@ -303,18 +343,50 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void mnustaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnustaffActionPerformed
-        new ManaStaff().setVisible(true);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        openNhanvien();
     }//GEN-LAST:event_mnustaffActionPerformed
 
     private void mnulearnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnulearnerActionPerformed
-        new ManaLearner().setVisible(true);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        openNguoihoc();
     }//GEN-LAST:event_mnulearnerActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+       if(Auth.isLogin()){
+           new ChangePassUI().setVisible(true);
+       } else {
+           MsgBox.alert(this, "Vui lòng đăng nhập !");
+           return;
+       }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void mnuloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuloginActionPerformed
+        new LoginUI().setVisible(true);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_mnuloginActionPerformed
+
+    private void mnuhdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuhdActionPerformed
+        openHuongdan();
+    }//GEN-LAST:event_mnuhdActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        openDangxuat();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        openDangxuat();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        openHuongdan();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void mnuketthucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuketthucActionPerformed
+        openKetthuc();
+    }//GEN-LAST:event_mnuketthucActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,10 +440,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
@@ -386,11 +455,50 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblcock;
+    private javax.swing.JMenuItem mnuhd;
     private javax.swing.JMenu mnuhethong;
+    private javax.swing.JMenuItem mnuketthuc;
     private javax.swing.JMenuItem mnulearner;
+    private javax.swing.JMenuItem mnulogin;
     private javax.swing.JMenu mnuquanly;
     private javax.swing.JMenuItem mnustaff;
     private javax.swing.JMenu mnuthongke;
     private javax.swing.JMenu mnutrogiup;
     // End of variables declaration//GEN-END:variables
+
+    private void openHuongdan() {
+        try {
+            Desktop.getDesktop().browse(new File("").toURI());
+        } catch (IOException e) {
+            MsgBox.alert(this,"Không tìm thấy file hướng dẫn !");
+            return;
+       }
+    }
+
+    private void openDangxuat() {
+        Auth.clear();
+        new LoginUI().setVisible(true);
+    }
+
+    private void openKetthuc() {
+        if(MsgBox.confirm(this, "Bạn có chắc muốn kết thúc ?")){
+            System.exit(0);
+        }
+    }
+
+    private void openNhanvien() {
+        if(Auth.isLogin()) {
+            new ManaStaff().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
+    }
+
+    private void openNguoihoc() {
+        if(Auth.isLogin()) {
+            new ManaLearner().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
+    }
 }

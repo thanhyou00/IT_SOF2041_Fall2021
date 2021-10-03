@@ -18,6 +18,7 @@ public class LoginUI extends javax.swing.JFrame {
     private  NhanVienDAO dao = new NhanVienDAO();
     public LoginUI() {
         initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
         ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
         this.setIconImage(icon.getImage());
