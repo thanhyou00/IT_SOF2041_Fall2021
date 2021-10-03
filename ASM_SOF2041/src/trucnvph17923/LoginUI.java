@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package trucnvph17923;
 
 import DAO.NhanVienDAO;
@@ -19,19 +15,7 @@ import Utils.MsgBox;
  * @author Nguyen Truc
  */
 public class LoginUI extends javax.swing.JFrame {
-
-    private String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=laptrinhedu";
-    private static String usersName = "sa";
-    private static String password = "vip123456789";
-    private Connection conn;
-    static {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    NhanVienDAO dao = new NhanVienDAO();
+    private  NhanVienDAO dao = new NhanVienDAO();
     public LoginUI() {
         initComponents();
         // Change default icon 
@@ -98,21 +82,26 @@ public class LoginUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("TÊN ĐĂNG NHẬP");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
         txtmanv.setText("trucnvph17923");
-        jPanel2.add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 293, -1));
+        jPanel2.add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 293, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("MẬT KHẨU");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
         txtpass.setText("vip123456789");
         txtpass.setEchoChar('\u2022');
-        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 293, -1));
+        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 212, 293, 30));
 
         btnlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Key.png"))); // NOI18N
         btnlogin.setText("ĐĂNG NHẬP");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
 
         btnthoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Log out.png"))); // NOI18N
@@ -150,6 +139,10 @@ public class LoginUI extends javax.swing.JFrame {
     private void btnthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthoatActionPerformed
         ketThuc();
     }//GEN-LAST:event_btnthoatActionPerformed
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        dangNhap();
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,11 +198,16 @@ public class LoginUI extends javax.swing.JFrame {
         String manv = txtmanv.getText();
         String matkhau = new String(txtpass.getPassword());
         Staff nv = dao.selectbyId(manv);
-        if(nv==null || (!matkhau.equals(nv.getMatkhau()))){
-           MsgBox.alert(this, "Sai tên đăng nhập hoặc mật khẩu !");
+        if(nv==null){
+           MsgBox.alert(this, "Sai tên đăng nhập !");
             return;
-        } else {
+        }else if((!matkhau.equals(nv.getMatkhau()))){
+           MsgBox.alert(this, "Sai mật khẩu !");
+            return;            
+        }
+        else {
             Auth.user = nv;
+            new MainUI().setVisible(true);
             this.dispose();
         }
     }

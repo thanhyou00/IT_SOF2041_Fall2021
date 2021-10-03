@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package trucnvph17923;
 
 import java.text.SimpleDateFormat;
@@ -202,6 +198,11 @@ public class MainUI extends javax.swing.JFrame {
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Refresh.png"))); // NOI18N
         jMenuItem4.setText("Đổi mật khẩu");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         mnuhethong.add(jMenuItem4);
         mnuhethong.add(jSeparator4);
 
@@ -310,6 +311,10 @@ public class MainUI extends javax.swing.JFrame {
         new ManaLearner().setVisible(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_mnulearnerActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments

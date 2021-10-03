@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Nguyen Truc
  */
 public class JDBCHelper {
-    static String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=laptrinhedu";
+    static String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=EDUSY";
     static String usersName = "sa";
     static String password = "vip123456789";
     static {
