@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class NguoiHocDAO extends EduSysDAO<Learner, String>{
 
     String insert = "INSERT INTO NGUOIHOC(MANH,HOTEN,GIOITINH,NGAYSINH,EMAIL,DIENTHOAI,GHICHU,MANV,NGAYDK) VALUES(?,?,?,?,?,?,?,?,?)";
-    String update = "UPDATE NGUOIHOC SET HOTEN = ?,GIOITINH=?,NGAYSINH=?,EMAIL=?,DIENTHOAI=?,GHICHU=?,NGAYDK = ? WHERE MANH = ? AND MANV = ?";
+    String update = "UPDATE NGUOIHOC SET HOTEN = ?,GIOITINH=?,NGAYSINH=?,EMAIL=?,DIENTHOAI=?,GHICHU=? WHERE MANH = ? ";
     String delete = "DELETE FROM NGUOIHOC WHERE MANH = ? AND MANV = ?";
     String selectAll = "SELECT *FROM NGUOIHOC";
     String selectbyId = "SELECT *FROM NGUOIHOC WHERE MANH = ?";    
@@ -29,7 +29,7 @@ public class NguoiHocDAO extends EduSysDAO<Learner, String>{
     @Override
     public void update(Learner entity) {
         JDBCHelper.update(update, entity.getHoten(),entity.getGioitinh(),entity.getNgaysinh(),entity.getEmail(),entity.getDienthoai(),entity.getGhichu(),
-                entity.getNgaydangky(),entity.getManh(),entity.getManv());    }
+        entity.getManh());    }
 
     @Override
     public void delete(String id) {
