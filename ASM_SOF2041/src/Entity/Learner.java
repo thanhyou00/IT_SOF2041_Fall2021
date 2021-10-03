@@ -1,6 +1,9 @@
 
 
 package Entity;
+
+import java.util.Date;
+
 /**
  *
  * @author Nguyen Truc
@@ -107,6 +110,8 @@ public class Learner {
     public String toString() {
         return "Learner{" + "manh=" + manh + ", hoten=" + hoten + ", gioitinh=" + gioitinh + ", ngaysinh=" + ngaysinh + ", email=" + email + ", dienthoai=" + dienthoai + ", ghichu=" + ghichu + ", manv=" + manv + ", ngaydangky=" + ngaydangky + '}';
     }
+
+    
     
     
 }

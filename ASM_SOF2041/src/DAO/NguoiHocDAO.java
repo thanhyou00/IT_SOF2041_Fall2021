@@ -75,4 +75,9 @@ public class NguoiHocDAO extends EduSysDAO<Learner, String>{
         }
     }
     
+    public List<Learner> selectbyKeyword(String keyword) {
+        String sql = "SELECT *FROM NGUOIHOC WHERE HOTEN LIKE ?";
+        return this.selectbySql(sql,"%"+keyword+"%");
+    }
+    
 }

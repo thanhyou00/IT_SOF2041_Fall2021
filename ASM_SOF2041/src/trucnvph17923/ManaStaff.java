@@ -16,17 +16,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Nguyen Truc
  */
 public class ManaStaff extends javax.swing.JFrame {
-    private  NhanVienDAO dao = new NhanVienDAO();
-    int row = -1;
     public ManaStaff() {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
         ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
         this.setIconImage(icon.getImage());
-        this.fillTable();
-        this.row = -1;
-        this.updateStatus();
+        init();
     }
 
     /**
@@ -371,7 +367,7 @@ public class ManaStaff extends javax.swing.JFrame {
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        edit();
+        update();
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -465,6 +461,13 @@ public class ManaStaff extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtmk2;
     // End of variables declaration//GEN-END:variables
 
+    private  NhanVienDAO dao = new NhanVienDAO();
+    int row = -1;
+    private void init() {
+        this.fillTable();
+        this.row = -1;
+        this.updateStatus();
+    }
     private void insert() {
         Staff nv = getForm();
         String mk2 = new String(txtmk2.getPassword());
@@ -609,6 +612,8 @@ public class ManaStaff extends javax.swing.JFrame {
         this.row=-1;
         this.updateStatus();
     }
+
+
 
 
 }

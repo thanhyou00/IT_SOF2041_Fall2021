@@ -5,6 +5,8 @@ import DAO.NguoiHocDAO;
 import Entity.Learner;
 import Utils.Auth;
 import Utils.MsgBox;
+import Utils.XDate;
+import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +28,6 @@ public class ManaLearner extends javax.swing.JFrame {
         this.row = -1;
         this.updateStatus();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,6 +111,7 @@ public class ManaLearner extends javax.swing.JFrame {
         buttonGroup1.add(rdonu);
         rdonu.setText("Nữ");
 
+        btnthem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add to basket.png"))); // NOI18N
         btnthem.setText("Thêm");
         btnthem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +119,7 @@ public class ManaLearner extends javax.swing.JFrame {
             }
         });
 
+        btnsua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Notes.png"))); // NOI18N
         btnsua.setText("Sửa");
         btnsua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +127,7 @@ public class ManaLearner extends javax.swing.JFrame {
             }
         });
 
+        btnxoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Task list.png"))); // NOI18N
         btnxoa.setText("Xóa");
         btnxoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +135,7 @@ public class ManaLearner extends javax.swing.JFrame {
             }
         });
 
+        btnthemmoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lists.png"))); // NOI18N
         btnthemmoi.setText("Mới");
         btnthemmoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,51 +263,63 @@ public class ManaLearner extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jLabel9)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(txtngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                        .addGap(37, 37, 37))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rdonam)
-                            .addComponent(rdonu))))
-                .addContainerGap())
+                            .addComponent(rdonu))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtngaysinh, txtsdt});
 
         tabs.addTab("CẬP NHẬT", jPanel1);
 
+        tblnguoihoc.setBackground(new java.awt.Color(0, 153, 153));
+        tblnguoihoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tblnguoihoc.setForeground(new java.awt.Color(255, 255, 255));
         tblnguoihoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã NH", "Họ tên", "Giới tính", "Ngày sinh", "Điện thoại", "Email", "Mã NV", "Ngày ĐK"
+                "Mã NH", "Họ tên", "Giới tính", "Ngày sinh", "Email", "Điện thoại", "Ghi chú", "Mã NV", "Ngày ĐK"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblnguoihoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblnguoihocMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblnguoihoc);
@@ -310,6 +327,11 @@ public class ManaLearner extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TÌM KIẾM", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         btntimkiem.setText("Tìm kiếm");
+        btntimkiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntimkiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -346,11 +368,11 @@ public class ManaLearner extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         tabs.addTab("DANH SÁCH", jPanel2);
@@ -372,8 +394,8 @@ public class ManaLearner extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -389,7 +411,7 @@ public class ManaLearner extends javax.swing.JFrame {
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        edit();
+        update();
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -415,6 +437,17 @@ public class ManaLearner extends javax.swing.JFrame {
     private void btnlastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlastActionPerformed
         last();
     }//GEN-LAST:event_btnlastActionPerformed
+
+    private void btntimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimkiemActionPerformed
+        search();
+    }//GEN-LAST:event_btntimkiemActionPerformed
+
+    private void tblnguoihocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblnguoihocMouseClicked
+        if(evt.getClickCount()==2){
+            this.row = tblnguoihoc.getSelectedRow();
+            this.edit();
+        }
+    }//GEN-LAST:event_tblnguoihocMouseClicked
 
     /**
      * @param args the command line arguments
@@ -515,8 +548,8 @@ public class ManaLearner extends javax.swing.JFrame {
 
     private void update() {
         Learner ln = getForm();
-        String manv = txtmanh.getText();
-        if(manv.length()==0) {
+        String manh = txtmanh.getText();
+        if(manh.length()==0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return;
         } else {
@@ -586,10 +619,12 @@ public class ManaLearner extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblnguoihoc.getModel();
         model.setRowCount(0);
         try {
-           List<Learner> list = dao.selectAll();
+           String keyword = txttimkiem.getText();
+           List<Learner> list = dao.selectbyKeyword(keyword);
             for (Learner ln : list) {
                 Object[] row = {
-   
+        ln.getManh(),ln.getHoten(),ln.getGioitinh()?"Nam":"Nữ",ln.getNgaysinh(),ln.getEmail(),ln.getDienthoai(),ln.getGhichu(),
+        ln.getManv(),ln.getNgaydangky(),
                 };
                 model.addRow(row);
             }
@@ -616,6 +651,8 @@ public class ManaLearner extends javax.swing.JFrame {
         ln.setDienthoai(txtsdt.getText());
         ln.setEmail(txtemail.getText());
         ln.setGioitinh(rdonam.isSelected());
+        ln.setGhichu(txtghichu.getText());
+        ln.setNgaysinh(txtngaysinh.getText());
         return ln;
     }
 
@@ -638,6 +675,13 @@ public class ManaLearner extends javax.swing.JFrame {
     private void clear(){
         Learner ln = new Learner();
         this.setForm(ln);
+        this.row=-1;
+        this.updateStatus();
+    }
+    
+    private void search() {
+        this.fillTable();
+        this.clear();
         this.row=-1;
         this.updateStatus();
     }
