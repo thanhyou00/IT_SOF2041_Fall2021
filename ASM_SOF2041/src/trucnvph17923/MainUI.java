@@ -77,7 +77,7 @@ public class MainUI extends javax.swing.JFrame {
         mnuketthuc = new javax.swing.JMenuItem();
         mnuquanly = new javax.swing.JMenu();
         mnuobjects = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        mnucourse = new javax.swing.JMenuItem();
         mnulearner = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
@@ -255,10 +255,15 @@ public class MainUI extends javax.swing.JFrame {
         });
         mnuquanly.add(mnuobjects);
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Certificate.png"))); // NOI18N
-        jMenuItem8.setText("Khóa học");
-        mnuquanly.add(jMenuItem8);
+        mnucourse.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_MASK));
+        mnucourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Certificate.png"))); // NOI18N
+        mnucourse.setText("Khóa học");
+        mnucourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnucourseActionPerformed(evt);
+            }
+        });
+        mnuquanly.add(mnucourse);
 
         mnulearner.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_MASK));
         mnulearner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Conference.png"))); // NOI18N
@@ -398,6 +403,10 @@ public class MainUI extends javax.swing.JFrame {
         openChuyende();
     }//GEN-LAST:event_mnuobjectsActionPerformed
 
+    private void mnucourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnucourseActionPerformed
+        openKhoahoc();
+    }//GEN-LAST:event_mnucourseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -452,7 +461,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar.Separator jSeparator2;
@@ -464,6 +472,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblcock;
+    private javax.swing.JMenuItem mnucourse;
     private javax.swing.JMenuItem mnuhd;
     private javax.swing.JMenu mnuhethong;
     private javax.swing.JMenuItem mnuketthuc;
@@ -515,6 +524,14 @@ public class MainUI extends javax.swing.JFrame {
     private void openChuyende() {
         if(Auth.isLogin()) {
             new ManaObjects().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
+    }
+    
+    private void openKhoahoc() {
+        if(Auth.isLogin()) {
+            new ManaCourse().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
         }

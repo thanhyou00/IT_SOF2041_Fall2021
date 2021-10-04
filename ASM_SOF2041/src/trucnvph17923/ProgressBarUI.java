@@ -24,7 +24,7 @@ public class ProgressBarUI extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
         this.setIconImage(icon.getImage());
         // Tao doi tuong timer
-        t  = new Timer(30,new ActionListener() {
+        t  = new Timer(20,new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // sau mỗi giây tăng giá trị progress lên 1 đơn vị-> nếu quá 100 bắt đầu lại từ 0

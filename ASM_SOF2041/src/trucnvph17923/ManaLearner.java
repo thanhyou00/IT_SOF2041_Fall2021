@@ -523,7 +523,7 @@ public class ManaLearner extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
-        private void insert() {
+    private void insert() {
         Learner ln = getForm();
         String manv = txtmanh.getText();
         if(manv.length()==0) {
