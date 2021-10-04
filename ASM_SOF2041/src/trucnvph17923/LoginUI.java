@@ -85,14 +85,14 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel2.setText("TÊN ĐĂNG NHẬP");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        txtmanv.setText("trucnvph17923");
+        txtmanv.setText("NV001");
         jPanel2.add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 293, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("MẬT KHẨU");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
-        txtpass.setText("vip123456789");
+        txtpass.setText("mk00001");
         txtpass.setEchoChar('\u2022');
         jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 212, 293, 30));
 

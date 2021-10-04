@@ -76,7 +76,7 @@ public class MainUI extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         mnuketthuc = new javax.swing.JMenuItem();
         mnuquanly = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        mnuobjects = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         mnulearner = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -245,10 +245,15 @@ public class MainUI extends javax.swing.JFrame {
 
         mnuquanly.setText("Quản lý");
 
-        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lists.png"))); // NOI18N
-        jMenuItem7.setText("Chuyên đề");
-        mnuquanly.add(jMenuItem7);
+        mnuobjects.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_MASK));
+        mnuobjects.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lists.png"))); // NOI18N
+        mnuobjects.setText("Chuyên đề");
+        mnuobjects.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuobjectsActionPerformed(evt);
+            }
+        });
+        mnuquanly.add(mnuobjects);
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Certificate.png"))); // NOI18N
@@ -374,6 +379,7 @@ public class MainUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         openDangxuat();
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -387,6 +393,10 @@ public class MainUI extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void mnuobjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuobjectsActionPerformed
+        openChuyende();
+    }//GEN-LAST:event_mnuobjectsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -442,7 +452,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -460,6 +469,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuketthuc;
     private javax.swing.JMenuItem mnulearner;
     private javax.swing.JMenuItem mnulogin;
+    private javax.swing.JMenuItem mnuobjects;
     private javax.swing.JMenu mnuquanly;
     private javax.swing.JMenuItem mnustaff;
     private javax.swing.JMenu mnuthongke;
@@ -497,6 +507,14 @@ public class MainUI extends javax.swing.JFrame {
     private void openNguoihoc() {
         if(Auth.isLogin()) {
             new ManaLearner().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
+    }
+    
+    private void openChuyende() {
+        if(Auth.isLogin()) {
+            new ManaObjects().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
         }

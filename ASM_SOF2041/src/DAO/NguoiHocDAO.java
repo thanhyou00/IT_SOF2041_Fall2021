@@ -15,7 +15,7 @@ public class NguoiHocDAO extends EduSysDAO<Learner, String>{
 
     String insert = "INSERT INTO NGUOIHOC(MANH,HOTEN,GIOITINH,NGAYSINH,EMAIL,DIENTHOAI,GHICHU,MANV,NGAYDK) VALUES(?,?,?,?,?,?,?,?,?)";
     String update = "UPDATE NGUOIHOC SET HOTEN = ?,GIOITINH=?,NGAYSINH=?,EMAIL=?,DIENTHOAI=?,GHICHU=? WHERE MANH = ? ";
-    String delete = "DELETE FROM NGUOIHOC WHERE MANH = ? AND MANV = ?";
+    String delete = "DELETE FROM NGUOIHOC WHERE MANH = ? ";
     String selectAll = "SELECT *FROM NGUOIHOC";
     String selectbyId = "SELECT *FROM NGUOIHOC WHERE MANH = ?";    
     
