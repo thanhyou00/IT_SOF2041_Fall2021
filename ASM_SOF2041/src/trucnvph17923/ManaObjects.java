@@ -257,15 +257,16 @@ public class ManaObjects extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnthem)
-                    .addComponent(btnsua)
-                    .addComponent(btnxoa)
-                    .addComponent(btnmoi)
-                    .addComponent(btnfirst)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnfirst, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnpre)
                     .addComponent(btnnext)
-                    .addComponent(btnlast))
+                    .addComponent(btnlast)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnthem)
+                        .addComponent(btnsua)
+                        .addComponent(btnxoa)
+                        .addComponent(btnmoi)))
                 .addContainerGap())
         );
 
@@ -275,6 +276,9 @@ public class ManaObjects extends javax.swing.JFrame {
 
         tabs.addTab("CẬP NHẬT", jPanel2);
 
+        tblchuyende.setBackground(new java.awt.Color(0, 153, 153));
+        tblchuyende.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tblchuyende.setForeground(new java.awt.Color(255, 255, 255));
         tblchuyende.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

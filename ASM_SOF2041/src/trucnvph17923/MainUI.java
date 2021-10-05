@@ -54,12 +54,12 @@ public class MainUI extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnketthuc = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnchuyende = new javax.swing.JButton();
+        btnnguoihoc = new javax.swing.JButton();
+        btnkhoahoc = new javax.swing.JButton();
+        btnhocvien = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
         jButton7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -79,7 +79,7 @@ public class MainUI extends javax.swing.JFrame {
         mnuobjects = new javax.swing.JMenuItem();
         mnucourse = new javax.swing.JMenuItem();
         mnulearner = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        mnustudent = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         mnustaff = new javax.swing.JMenuItem();
         mnuthongke = new javax.swing.JMenu();
@@ -112,46 +112,66 @@ public class MainUI extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton1);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Stop.png"))); // NOI18N
-        jButton2.setText("Kết thúc");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnketthuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Stop.png"))); // NOI18N
+        btnketthuc.setText("Kết thúc");
+        btnketthuc.setFocusable(false);
+        btnketthuc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnketthuc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnketthuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnketthucActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar1.add(btnketthuc);
         jToolBar1.add(jSeparator2);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lists.png"))); // NOI18N
-        jButton3.setText("Chuyên đề");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        btnchuyende.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lists.png"))); // NOI18N
+        btnchuyende.setText("Chuyên đề");
+        btnchuyende.setFocusable(false);
+        btnchuyende.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnchuyende.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnchuyende.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnchuyendeActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnchuyende);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Conference.png"))); // NOI18N
-        jButton4.setText("Người học");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        btnnguoihoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Conference.png"))); // NOI18N
+        btnnguoihoc.setText("Người học");
+        btnnguoihoc.setFocusable(false);
+        btnnguoihoc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnnguoihoc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnnguoihoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnguoihocActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnnguoihoc);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Certificate.png"))); // NOI18N
-        jButton5.setText("Khóa học");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
+        btnkhoahoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Certificate.png"))); // NOI18N
+        btnkhoahoc.setText("Khóa học");
+        btnkhoahoc.setFocusable(false);
+        btnkhoahoc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnkhoahoc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnkhoahoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkhoahocActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnkhoahoc);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User.png"))); // NOI18N
-        jButton6.setText("Học viên");
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton6);
+        btnhocvien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User.png"))); // NOI18N
+        btnhocvien.setText("Học viên");
+        btnhocvien.setFocusable(false);
+        btnhocvien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnhocvien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnhocvien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhocvienActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnhocvien);
         jToolBar1.add(jSeparator6);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Globe.png"))); // NOI18N
@@ -275,10 +295,15 @@ public class MainUI extends javax.swing.JFrame {
         });
         mnuquanly.add(mnulearner);
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User.png"))); // NOI18N
-        jMenuItem10.setText("Học viên");
-        mnuquanly.add(jMenuItem10);
+        mnustudent.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_MASK));
+        mnustudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/User.png"))); // NOI18N
+        mnustudent.setText("Học viên");
+        mnustudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnustudentActionPerformed(evt);
+            }
+        });
+        mnuquanly.add(mnustudent);
         mnuquanly.add(jSeparator7);
 
         mnustaff.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_MASK));
@@ -348,9 +373,9 @@ public class MainUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnketthucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnketthucActionPerformed
+        openKetthuc();
+    }//GEN-LAST:event_btnketthucActionPerformed
 
     private void mnustaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnustaffActionPerformed
         openNhanvien();
@@ -407,6 +432,26 @@ public class MainUI extends javax.swing.JFrame {
         openKhoahoc();
     }//GEN-LAST:event_mnucourseActionPerformed
 
+    private void mnustudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnustudentActionPerformed
+        openHocvien();
+    }//GEN-LAST:event_mnustudentActionPerformed
+
+    private void btnchuyendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnchuyendeActionPerformed
+        openChuyende();
+    }//GEN-LAST:event_btnchuyendeActionPerformed
+
+    private void btnnguoihocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnguoihocActionPerformed
+        openNguoihoc();
+    }//GEN-LAST:event_btnnguoihocActionPerformed
+
+    private void btnkhoahocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhoahocActionPerformed
+        openKhoahoc();
+    }//GEN-LAST:event_btnkhoahocActionPerformed
+
+    private void btnhocvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhocvienActionPerformed
+        openHocvien();
+    }//GEN-LAST:event_btnhocvienActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,18 +488,17 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnchuyende;
+    private javax.swing.JButton btnhocvien;
+    private javax.swing.JButton btnketthuc;
+    private javax.swing.JButton btnkhoahoc;
+    private javax.swing.JButton btnnguoihoc;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
@@ -481,6 +525,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuobjects;
     private javax.swing.JMenu mnuquanly;
     private javax.swing.JMenuItem mnustaff;
+    private javax.swing.JMenuItem mnustudent;
     private javax.swing.JMenu mnuthongke;
     private javax.swing.JMenu mnutrogiup;
     // End of variables declaration//GEN-END:variables
@@ -532,6 +577,14 @@ public class MainUI extends javax.swing.JFrame {
     private void openKhoahoc() {
         if(Auth.isLogin()) {
             new ManaCourse().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
+    }
+    
+    private void openHocvien() {
+        if(Auth.isLogin()) {
+            new ManaStudents().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
         }

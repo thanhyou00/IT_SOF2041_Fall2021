@@ -313,6 +313,9 @@ public class ManaCourse extends javax.swing.JFrame {
 
         tabs.addTab("CẬP NHẬT", jPanel3);
 
+        tblkhoahoc.setBackground(new java.awt.Color(0, 153, 153));
+        tblkhoahoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tblkhoahoc.setForeground(new java.awt.Color(255, 255, 255));
         tblkhoahoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

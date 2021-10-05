@@ -80,4 +80,10 @@ public class NguoiHocDAO extends EduSysDAO<Learner, String>{
         return this.selectbySql(sql,"%"+keyword+"%");
     }
     
+    public List<Learner> selectNotinCourse(int makh, String keyword) {
+        String sql = "SELECT *FROM NGUOIHOC WHERE HOTEN LIKE ? AND MANH NOT IN "
+                + "(SELECT MANH FROM HOCVIEN WHERE MAKH = ?)";
+        return this.selectbySql(sql,"%"+keyword+"%",makh);
+    }    
+    
 }
