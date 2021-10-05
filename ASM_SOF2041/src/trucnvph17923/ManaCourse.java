@@ -537,7 +537,7 @@ public class ManaCourse extends javax.swing.JFrame {
                 MsgBox.alert(this, "Thêm mới thành công !");
                 return;
             } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thành công !");
+                MsgBox.alert(this, "Thêm mới thất bại !");
                 return;
             }
         }
@@ -575,7 +575,7 @@ public class ManaCourse extends javax.swing.JFrame {
                     this.clear();
                     MsgBox.alert(this, "Xóa thành công !");
                 } catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thành công !");
+                    MsgBox.alert(this, "Xóa thất bại !");
                 }
             }
         }

@@ -90,6 +90,7 @@ public class ManaStaff extends javax.swing.JFrame {
         jLabel6.setText("Vai trò");
 
         buttonGroup1.add(rdotruongphong);
+        rdotruongphong.setSelected(true);
         rdotruongphong.setText("Trưởng phòng");
         rdotruongphong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +134,6 @@ public class ManaStaff extends javax.swing.JFrame {
         });
 
         btnfirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/start.png"))); // NOI18N
-        btnfirst.setActionCommand("");
         btnfirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnfirstActionPerformed(evt);
@@ -592,8 +592,12 @@ public class ManaStaff extends javax.swing.JFrame {
     }
     
     private void clear(){
-        Staff nv = new Staff();
-        this.setForm(nv);
+      //  Staff nv = new Staff();
+        //this.setForm(nv);
+        txthoten.setText("");
+        txtmanv.setText("");
+        txtmk.setText("");
+        txtmk2.setText("");
         this.row=-1;
         this.updateStatus();
     }

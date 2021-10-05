@@ -670,8 +670,14 @@ public class ManaLearner extends javax.swing.JFrame {
     }
     
     private void clear(){
-        Learner ln = new Learner();
-        this.setForm(ln);
+      //  Learner ln = new Learner();
+     //   this.setForm(ln);
+        txtemail.setText("");
+        txtghichu.setText("");
+        txthoten.setText("");
+        txtngaysinh.setText("");
+        txtmanh.setText("");
+        txtsdt.setText("");
         this.row=-1;
         this.updateStatus();
     }
