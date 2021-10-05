@@ -6,8 +6,11 @@ import DAO.HocVienDAO;
 import DAO.KhoaHocDAO;
 import DAO.NguoiHocDAO;
 import Entity.Course;
+import Entity.Learner;
 import Entity.Objects;
 import Entity.Students;
+import Utils.Auth;
+import Utils.MsgBox;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -47,19 +50,19 @@ public class ManaStudents extends javax.swing.JFrame {
         cbochuyende = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         cbokhoahoc = new javax.swing.JComboBox<>();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblhocvien = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnxoa = new javax.swing.JButton();
+        btncapnhat = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         txttimkiem = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblnguoihoc = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        btnthem = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,6 +76,12 @@ public class ManaStudents extends javax.swing.JFrame {
         jLabel1.setText("KHÓA HỌC");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        cbochuyende.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbochuyendeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,11 +137,21 @@ public class ManaStudents extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblhocvien);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Task list.png"))); // NOI18N
-        jButton1.setText("Xóa khỏi khóa học");
+        btnxoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Task list.png"))); // NOI18N
+        btnxoa.setText("Xóa khỏi khóa học");
+        btnxoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxoaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Notes.png"))); // NOI18N
-        jButton2.setText("Cập nhật điểm");
+        btncapnhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Notes.png"))); // NOI18N
+        btncapnhat.setText("Cập nhật điểm");
+        btncapnhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncapnhatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -144,9 +163,9 @@ public class ManaStudents extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 493, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btnxoa)
                         .addGap(153, 153, 153)
-                        .addComponent(jButton2)))
+                        .addComponent(btncapnhat)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -156,12 +175,12 @@ public class ManaStudents extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnxoa)
+                    .addComponent(btncapnhat))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("HỌC VIÊN", jPanel4);
+        tabs.addTab("HỌC VIÊN", jPanel4);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("TÌM KIẾM");
@@ -211,8 +230,13 @@ public class ManaStudents extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblnguoihoc);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add to basket.png"))); // NOI18N
-        jButton3.setText("Thêm vào khóa học");
+        btnthem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Add to basket.png"))); // NOI18N
+        btnthem.setText("Thêm vào khóa học");
+        btnthem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnthemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -228,7 +252,7 @@ public class ManaStudents extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(btnthem)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -241,11 +265,11 @@ public class ManaStudents extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btnthem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("NGƯỜI HỌC", jPanel5);
+        tabs.addTab("NGƯỜI HỌC", jPanel5);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -258,7 +282,7 @@ public class ManaStudents extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(tabs)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,7 +308,7 @@ public class ManaStudents extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -308,11 +332,24 @@ public class ManaStudents extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblnguoihocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblnguoihocMouseClicked
-//        if(evt.getClickCount()==2){
-//            this.row = tblnguoihoc.getSelectedRow();
-//            this.edit();
-//        }
+
     }//GEN-LAST:event_tblnguoihocMouseClicked
+
+    private void btncapnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncapnhatActionPerformed
+        updateDiem();
+    }//GEN-LAST:event_btncapnhatActionPerformed
+
+    private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
+        deleteHocvien();
+    }//GEN-LAST:event_btnxoaActionPerformed
+
+    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
+        addHocvien();
+    }//GEN-LAST:event_btnthemActionPerformed
+
+    private void cbochuyendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbochuyendeActionPerformed
+        fillComboKhoahoc();
+    }//GEN-LAST:event_cbochuyendeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,11 +387,11 @@ public class ManaStudents extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btncapnhat;
+    private javax.swing.JButton btnthem;
+    private javax.swing.JButton btnxoa;
     private javax.swing.JComboBox<String> cbochuyende;
     private javax.swing.JComboBox<String> cbokhoahoc;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -366,7 +403,7 @@ public class ManaStudents extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblhocvien;
     private javax.swing.JTable tblnguoihoc;
     private javax.swing.JTextField txttimkiem;
@@ -421,6 +458,52 @@ public class ManaStudents extends javax.swing.JFrame {
     }
 
     private void fillTableNguoihoc() {
-        
+        DefaultTableModel model = (DefaultTableModel) tblnguoihoc.getModel();
+        model.setRowCount(0);
+        Course kh = (Course) cbokhoahoc.getSelectedItem();
+        String keyword = txttimkiem.getText();
+        List<Learner> list = nhdao.selectNotinCourse(kh.getMakh(), keyword);
+        for (Learner nh : list) {
+            model.addRow(new Object[]{
+                nh.getManh(),nh.getHoten(),nh.getGioitinh()?"Nam":"Nữ",
+                nh.getNgaysinh(),nh.getDienthoai(),nh.getEmail()
+            });
+        }
+    }
+    private void addHocvien() {
+        Course kh = (Course) cbokhoahoc.getSelectedItem();
+        for(int row : tblnguoihoc.getSelectedRows()) {
+            Students hv = new Students();
+            hv.setMakh(kh.getMakh());
+            hv.setDiem(0);
+            hv.setManh(tblnguoihoc.getValueAt(row, 0).toString());
+            hvdao.insert(hv);
+        }
+        this.fillTableHocvien();
+        this.tabs.setSelectedIndex(0);
+    }
+    
+    private void deleteHocvien() {
+        if(!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền xóa học viên !");
+        } else {
+            if(MsgBox.confirm(this, "Bạn muốn xóa các học viên được chọn ?")) {
+                for(int row : tblhocvien.getSelectedRows()) {
+                    int mahv = (int) tblhocvien.getValueAt(row, 1);
+                    hvdao.delete(mahv+"");
+                }
+            }
+            this.fillTableHocvien();
+        }
+    }
+    
+    private void updateDiem() {
+        for(int i=0;i<tblhocvien.getRowCount();i++){
+            String mahv = tblhocvien.getValueAt(i, 1).toString();
+            Students hv = hvdao.selectbyId(mahv);
+            hv.setDiem(Float.valueOf(tblhocvien.getValueAt(i, 4).toString()));
+            hvdao.update(hv);
+        }
+        MsgBox.alert(this, "Cập nhật điểm thành công !");
     }
 }

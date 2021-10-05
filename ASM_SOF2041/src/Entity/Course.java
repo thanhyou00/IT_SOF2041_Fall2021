@@ -95,6 +95,12 @@ public class Course {
         this.ngaytao = ngaytao;
     }
 
+    @Override
+    public String toString() {
+        return macd + "(" + ngaytao + ")";
+    }
+
+    
 
     
     

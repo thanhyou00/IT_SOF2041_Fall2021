@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class HocVienDAO extends EduSysDAO<Students, String> {
 
     String insert = "INSERT INTO HOCVIEN(MAKH,MANH,DIEM) VALUES(?,?,?)";
-    String update = "UPDATE HOCVIEN SET MAKH = ? , MANH = ? , DIEM = ? WHERE MAHV = ?";
+    String update = "UPDATE HOCVIEN SET DIEM = ? WHERE MAHV = ?";
     String delete = "DELETE FROM HOCVIEN WHERE MAHV = ?";
     String selectAll = "SELECT *FROM HOCVIEN";
     String selectbyId = "SELECT *FROM HOCVIEN WHERE MAHV = ?";
@@ -25,7 +25,7 @@ public class HocVienDAO extends EduSysDAO<Students, String> {
 
     @Override
     public void update(Students entity) {
-        JDBCHelper.update(update, entity.getMakh(), entity.getManh(), entity.getDiem(), entity.getMahv());
+        JDBCHelper.update(update, entity.getDiem(),entity.getMahv());
     }
 
     @Override
