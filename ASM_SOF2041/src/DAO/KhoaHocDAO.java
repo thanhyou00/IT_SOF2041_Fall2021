@@ -4,6 +4,7 @@ import Entity.Course;
 import java.util.List;
 import JDBCHelper.JDBCHelper;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -76,5 +77,20 @@ public class KhoaHocDAO extends EduSysDAO<Course, String> {
     public List<Course> selectbyChuyende(String macd) {
         String sql = "SELECT *FROM KHOAHOC WHERE MACD = ?";
         return this.selectbySql(sql, macd);
+    }
+    
+    public List<Integer> selectYear() {
+        String sql = "SELECT DISTINCT YEAR(NGAYKG) AS YEAR FROM KHOAHOC ORDER BY YEAR DESC";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JDBCHelper.query(sql);
+            while(rs.next()){
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

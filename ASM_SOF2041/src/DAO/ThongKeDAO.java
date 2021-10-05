@@ -10,7 +10,7 @@ import JDBCHelper.JDBCHelper;
  * @author Nguyen Truc
  */
 public class ThongKeDAO {
-    private List<Object[]> getListofArray(String sql,String[] cols, Object... args) {
+    public List<Object[]> getListofArray(String sql,String[] cols, Object... args) {
         try {
             List<Object[]> list = new ArrayList<>();
             ResultSet rs = JDBCHelper.query(sql, args);
@@ -28,27 +28,28 @@ public class ThongKeDAO {
         }
     }
     
-    private List<Object[]> getBangDiem(Integer MAKH) {
+    public List<Object[]> getBangDiem(Integer MAKH) {
         String sql = "{CALL sp_Bangdiem(?)}";
         String[] cols = {"MANH","HOTEN","DIEM"};
         return this.getListofArray(sql, cols, MAKH);
     }
     
-    private List<Object[]> getLuongNguoiHoc(){
+    public List<Object[]> getLuongNguoiHoc(){
         String sql = "{CALL sp_Thongkenguoihoc}";
         String[] cols = {"NAM","SOLUONG","DAUTIEN","CUOICUNG"};
         return this.getListofArray(sql, cols);
     }
     
-    private List<Object[]> getDiemChuyenDe(){
+    public List<Object[]> getDiemChuyenDe(){
         String sql = "{CALL sp_Thongkediem}";
         String[] cols = {"TENCHUYENDE","SOHV","DIEMTN","DIEMCN","DIEMTB"};
         return this.getListofArray(sql, cols);
     }    
     
-    private List<Object[]> getDoanhThu(int NAM){
+    public List<Object[]> getDoanhThu(int NAM){
         String sql = "{CALL sp_Thongkedoanhthu(?)}";
         String[] cols = {"TENCHUYENDE","SOKH","SOHV","DOANHTHU","DTHUTN","DTHUCN","HPHITB"};
         return this.getListofArray(sql, cols, NAM);
     }
+
 }
