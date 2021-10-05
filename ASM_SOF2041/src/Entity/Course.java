@@ -29,6 +29,8 @@ public class Course {
         this.ngaytao = ngaytao;
     }
 
+    
+
     public int getMakh() {
         return makh;
     }
@@ -93,10 +95,7 @@ public class Course {
         this.ngaytao = ngaytao;
     }
 
-    @Override
-    public String toString() {
-        return "Course{" + "makh=" + makh + ", macd=" + macd + ", hocphi=" + hocphi + ", thoiluong=" + thoiluong + ", ngaykhaigiang=" + ngaykhaigiang + ", ghichu=" + ghichu + ", manv=" + manv + ", ngaytao=" + ngaytao + '}';
-    }
+
     
     
     

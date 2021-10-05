@@ -447,10 +447,10 @@ public class ManaStaff extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private  NhanVienDAO dao = new NhanVienDAO();
-    int row =-1 ;
+    int row =0;
     private void init() {
         this.fillTable();
-        this.row = -1;
+        this.row = 0;
         this.updateStatus();
     }
     private void insert() {
@@ -597,8 +597,4 @@ public class ManaStaff extends javax.swing.JFrame {
         this.row=-1;
         this.updateStatus();
     }
-
-
-
-
 }
