@@ -381,7 +381,7 @@ public class Statistics extends javax.swing.JFrame {
         Course kh = (Course) cboKhoahoc.getSelectedItem();
         List<Object[]> list = dao.getBangDiem(kh.getMakh());
         for (Object[] row : list) {
-            float diem = (float) row[2];
+            float diem = Float.valueOf(row[2].toString());
             model.addRow(new Object[]{
                 row[0],row[1],diem,getXeploai(diem)
             });
@@ -427,7 +427,7 @@ public class Statistics extends javax.swing.JFrame {
         }
     }
 
-    private void selectTab(int index) {
+    public void selectTab(int index) {
         tabs.setSelectedIndex(index);
     }
 
@@ -446,4 +446,5 @@ public class Statistics extends javax.swing.JFrame {
         }
         return "Xuất sắc";
     }
+    
 }

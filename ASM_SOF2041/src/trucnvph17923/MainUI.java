@@ -1,4 +1,3 @@
-
 package trucnvph17923;
 
 import Utils.Auth;
@@ -72,7 +71,7 @@ public class MainUI extends javax.swing.JFrame {
         mnulogin = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        mneudoimatkhau = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         mnuketthuc = new javax.swing.JMenuItem();
         mnuquanly = new javax.swing.JMenu();
@@ -83,15 +82,15 @@ public class MainUI extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         mnustaff = new javax.swing.JMenuItem();
         mnuthongke = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        mnibangdiem = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
+        mniluongnguoihoc = new javax.swing.JMenuItem();
+        mnidiemcd = new javax.swing.JMenuItem();
+        mnidoanhthu = new javax.swing.JMenuItem();
         mnutrogiup = new javax.swing.JMenu();
         mnuhd = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mnuintro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LẬP TRÌNH CITY EDUCATION");
@@ -241,14 +240,14 @@ public class MainUI extends javax.swing.JFrame {
         mnuhethong.add(jMenuItem1);
         mnuhethong.add(jSeparator3);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Refresh.png"))); // NOI18N
-        jMenuItem4.setText("Đổi mật khẩu");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        mneudoimatkhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Refresh.png"))); // NOI18N
+        mneudoimatkhau.setText("Đổi mật khẩu");
+        mneudoimatkhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                mneudoimatkhauActionPerformed(evt);
             }
         });
-        mnuhethong.add(jMenuItem4);
+        mnuhethong.add(mneudoimatkhau);
         mnuhethong.add(jSeparator4);
 
         mnuketthuc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
@@ -319,32 +318,52 @@ public class MainUI extends javax.swing.JFrame {
         jMenuBar1.add(mnuquanly);
 
         mnuthongke.setText("Thống kê");
-
-        jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Card file.png"))); // NOI18N
-        jMenuItem12.setText("Bảng điểm");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        mnuthongke.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                mnuthongkeActionPerformed(evt);
             }
         });
-        mnuthongke.add(jMenuItem12);
+
+        mnibangdiem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.SHIFT_MASK));
+        mnibangdiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Card file.png"))); // NOI18N
+        mnibangdiem.setText("Bảng điểm");
+        mnibangdiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnibangdiemActionPerformed(evt);
+            }
+        });
+        mnuthongke.add(mnibangdiem);
         mnuthongke.add(jSeparator8);
 
-        jMenuItem14.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Clien list.png"))); // NOI18N
-        jMenuItem14.setText("Lượng người học");
-        mnuthongke.add(jMenuItem14);
+        mniluongnguoihoc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.SHIFT_MASK));
+        mniluongnguoihoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Clien list.png"))); // NOI18N
+        mniluongnguoihoc.setText("Lượng người học");
+        mniluongnguoihoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniluongnguoihocActionPerformed(evt);
+            }
+        });
+        mnuthongke.add(mniluongnguoihoc);
 
-        jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Bar chart.png"))); // NOI18N
-        jMenuItem13.setText("Điểm chuyên đề");
-        mnuthongke.add(jMenuItem13);
+        mnidiemcd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.SHIFT_MASK));
+        mnidiemcd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Bar chart.png"))); // NOI18N
+        mnidiemcd.setText("Điểm chuyên đề");
+        mnidiemcd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnidiemcdActionPerformed(evt);
+            }
+        });
+        mnuthongke.add(mnidiemcd);
 
-        jMenuItem15.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Dollar.png"))); // NOI18N
-        jMenuItem15.setText("Doanh thu");
-        mnuthongke.add(jMenuItem15);
+        mnidoanhthu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.SHIFT_MASK));
+        mnidoanhthu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Dollar.png"))); // NOI18N
+        mnidoanhthu.setText("Doanh thu");
+        mnidoanhthu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnidoanhthuActionPerformed(evt);
+            }
+        });
+        mnuthongke.add(mnidoanhthu);
 
         jMenuBar1.add(mnuthongke);
 
@@ -361,9 +380,14 @@ public class MainUI extends javax.swing.JFrame {
         mnutrogiup.add(mnuhd);
         mnutrogiup.add(jSeparator5);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Brick house.png"))); // NOI18N
-        jMenuItem6.setText("Giới thiệu sản phẩm");
-        mnutrogiup.add(jMenuItem6);
+        mnuintro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Brick house.png"))); // NOI18N
+        mnuintro.setText("Giới thiệu sản phẩm");
+        mnuintro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuintroActionPerformed(evt);
+            }
+        });
+        mnutrogiup.add(mnuintro);
 
         jMenuBar1.add(mnutrogiup);
 
@@ -385,18 +409,17 @@ public class MainUI extends javax.swing.JFrame {
         openNguoihoc();
     }//GEN-LAST:event_mnulearnerActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-       if(Auth.isLogin()){
-           new ChangePassUI().setVisible(true);
-       } else {
-           MsgBox.alert(this, "Vui lòng đăng nhập !");
-           return;
-       }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void mneudoimatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mneudoimatkhauActionPerformed
+        if (Auth.isLogin()) {
+            new ChangePassUI().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+            return;
+        }
+    }//GEN-LAST:event_mneudoimatkhauActionPerformed
 
     private void mnuloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuloginActionPerformed
-        new LoginUI().setVisible(true);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        openDangnhap();
     }//GEN-LAST:event_mnuloginActionPerformed
 
     private void mnuhdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuhdActionPerformed
@@ -420,9 +443,9 @@ public class MainUI extends javax.swing.JFrame {
         openKetthuc();
     }//GEN-LAST:event_mnuketthucActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    private void mnibangdiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnibangdiemActionPerformed
+        openThongke(WIDTH);
+    }//GEN-LAST:event_mnibangdiemActionPerformed
 
     private void mnuobjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuobjectsActionPerformed
         openChuyende();
@@ -451,6 +474,26 @@ public class MainUI extends javax.swing.JFrame {
     private void btnhocvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhocvienActionPerformed
         openHocvien();
     }//GEN-LAST:event_btnhocvienActionPerformed
+
+    private void mnuintroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuintroActionPerformed
+        openGioithieu();
+    }//GEN-LAST:event_mnuintroActionPerformed
+
+    private void mnuthongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuthongkeActionPerformed
+        openThongke(WIDTH);
+    }//GEN-LAST:event_mnuthongkeActionPerformed
+
+    private void mniluongnguoihocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniluongnguoihocActionPerformed
+        openThongke(WIDTH);
+    }//GEN-LAST:event_mniluongnguoihocActionPerformed
+
+    private void mnidiemcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnidiemcdActionPerformed
+        openThongke(WIDTH);
+    }//GEN-LAST:event_mnidiemcdActionPerformed
+
+    private void mnidoanhthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnidoanhthuActionPerformed
+        openThongke(WIDTH);
+    }//GEN-LAST:event_mnidoanhthuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -499,12 +542,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar.Separator jSeparator2;
@@ -516,9 +553,15 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblcock;
+    private javax.swing.JMenuItem mneudoimatkhau;
+    private javax.swing.JMenuItem mnibangdiem;
+    private javax.swing.JMenuItem mnidiemcd;
+    private javax.swing.JMenuItem mnidoanhthu;
+    private javax.swing.JMenuItem mniluongnguoihoc;
     private javax.swing.JMenuItem mnucourse;
     private javax.swing.JMenuItem mnuhd;
     private javax.swing.JMenu mnuhethong;
+    private javax.swing.JMenuItem mnuintro;
     private javax.swing.JMenuItem mnuketthuc;
     private javax.swing.JMenuItem mnulearner;
     private javax.swing.JMenuItem mnulogin;
@@ -531,27 +574,38 @@ public class MainUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void openHuongdan() {
-        try {
-            Desktop.getDesktop().browse(new File("").toURI());
-        } catch (IOException e) {
-            MsgBox.alert(this,"Không tìm thấy file hướng dẫn !");
-            return;
-       }
+        if (Auth.isLogin()) {
+            try {
+                Desktop.getDesktop().browse(new File("User manual/index.html").toURI());
+            } catch (IOException e) {
+                MsgBox.alert(this, "Không tìm thấy file hướng dẫn !");
+                return;
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
     }
 
     private void openDangxuat() {
         Auth.clear();
+        new MainUI().setVisible(true);
+        dispose();
+    }
+
+    private void openDangnhap() {
+        Auth.clear();
         new LoginUI().setVisible(true);
+        dispose();
     }
 
     private void openKetthuc() {
-        if(MsgBox.confirm(this, "Bạn có chắc muốn kết thúc ?")){
+        if (MsgBox.confirm(this, "Bạn có chắc muốn kết thúc ?")) {
             System.exit(0);
         }
     }
 
     private void openNhanvien() {
-        if(Auth.isLogin()) {
+        if (Auth.isLogin()) {
             new ManaStaff().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
@@ -559,32 +613,54 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     private void openNguoihoc() {
-        if(Auth.isLogin()) {
+        if (Auth.isLogin()) {
             new ManaLearner().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
         }
     }
-    
+
     private void openChuyende() {
-        if(Auth.isLogin()) {
+        if (Auth.isLogin()) {
             new ManaObjects().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
         }
     }
-    
+
     private void openKhoahoc() {
-        if(Auth.isLogin()) {
+        if (Auth.isLogin()) {
             new ManaCourse().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
         }
     }
-    
+
     private void openHocvien() {
-        if(Auth.isLogin()) {
+        if (Auth.isLogin()) {
             new ManaStudents().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
+    }
+
+    private void openGioithieu() {
+        if (Auth.isLogin()) {
+            new IntroUI().setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
+    }
+
+    private void openThongke(int index) {
+        if (Auth.isLogin()) {
+            if (index == 3 && !Auth.isManager()) {
+                MsgBox.alert(this, "Bạn không có quyền xem thông tin doanh thu !");
+            } else {
+                Statistics tk = new Statistics();
+                tk.setVisible(true);
+                tk.selectTab(index);
+            }
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
         }
