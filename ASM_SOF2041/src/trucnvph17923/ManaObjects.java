@@ -378,11 +378,19 @@ public class ManaObjects extends javax.swing.JFrame {
     }//GEN-LAST:event_tblchuyendeMouseClicked
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-       insert();
+       if(checkAll()==false){
+           return;
+       } else {
+            insert();
+       }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        update();
+       if(checkAll()==false){
+           return;
+       } else {
+            update();
+       }
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -475,17 +483,10 @@ public class ManaObjects extends javax.swing.JFrame {
     private void insert() {
         Objects cd = getForm();
         String macd = txtmacd.getText();
-        String tencd = txttencd.getText();
-        String thoiluong = txtthoiluong.getText();
-        String hocphi = txthocphi.getText();
-        String mota = txtmota.getText();
-        if (macd.length() == 0||tencd.length()==0||thoiluong.length()==0||hocphi.length()==0||mota.length()==0) {
-            MsgBox.alert(this, "Không được để trống dữ liệu !");
-            return;
-        } else if(macd.equals(cd.getMacd())){
+        if (macd.equals(cd.getMacd())) {
             MsgBox.alert(this, "Mã chuyên đề đã tồn tại !");
             return;
-        }else {
+        } else {
             try {
                 dao.insert(cd);
                 this.fillTable();
@@ -501,15 +502,6 @@ public class ManaObjects extends javax.swing.JFrame {
 
     private void update() {
         Objects cd = getForm();
-        String macd = txtmacd.getText();
-        String tencd = txttencd.getText();
-        String thoiluong = txtthoiluong.getText();
-        String hocphi = txthocphi.getText();
-        String mota = txtmota.getText();
-        if (macd.length() == 0||tencd.length()==0||thoiluong.length()==0||hocphi.length()==0||mota.length()==0) {
-            MsgBox.alert(this, "Không được để trống dữ liệu !");
-            return;
-        } else {
             try {
                 dao.update(cd);
                 this.fillTable();
@@ -518,7 +510,6 @@ public class ManaObjects extends javax.swing.JFrame {
             } catch (Exception e) {
                 MsgBox.alert(this, "Cập nhật thất bại !");
             }
-        }
     }
 
     private void delete() {
@@ -526,7 +517,7 @@ public class ManaObjects extends javax.swing.JFrame {
             MsgBox.alert(this, "Bạn không có quyền xóa chuyên đề !");
         } else {
             String manv = txtmacd.getText();
-             if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chuyên đề này ?")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa chuyên đề này ?")) {
                 try {
                     dao.delete(manv);
                     this.fillTable();
@@ -642,6 +633,41 @@ public class ManaObjects extends javax.swing.JFrame {
             ImageIcon icon = XImage.read(file.getName());
             lblhinh.setIcon(icon);
             lblhinh.setToolTipText(file.getName());
+        }
+    }
+
+    private boolean checkAll() {
+        String macd = txtmacd.getText();
+        String tencd = txttencd.getText();
+        int thoiluong;
+        float hocphi;
+        String mota = txtmota.getText();
+        try {
+            thoiluong = Integer.parseInt(txtthoiluong.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thời lượng phải là số và lớn hơn 0 !");
+            return false;
+        }
+        try {
+            hocphi = Float.parseFloat(txthocphi.getText());
+        } catch (Exception e) {
+            MsgBox.alert(this, "Học phí phải là số và lớn hơn 0 !");
+            return false;
+        }
+        if (macd.length() == 0 || tencd.length() == 0 || (thoiluong+"").length() == 0 || (hocphi + "").length() == 0 || mota.length() == 0) {
+            MsgBox.alert(this, "Không được để trống dữ liệu !");
+            return false;
+        }
+        else if(thoiluong<=0) {
+            MsgBox.alert(this, "Thời lượng phải lớn hơn 0 ");
+            return false;
+        }
+        else if(hocphi<=0) {
+            MsgBox.alert(this, "Học phí phải lớn hơn 0 ");
+            return false;
+        }        
+        else {
+            return true;
         }
     }
 

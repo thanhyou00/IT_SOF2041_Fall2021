@@ -348,11 +348,24 @@ public class ManaStaff extends javax.swing.JFrame {
     }//GEN-LAST:event_tblnhanvienMouseClicked
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        insert();
+        Staff nv = getForm();
+        if(checkAll()==false) {
+            return;
+        } else if(txtmanv.getText().equals(nv.getManv())){
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại !");
+            return;
+        } 
+        else {
+            insert();
+        }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        update();
+        if(checkAll()==false) {
+            return;
+        } else {
+            update();
+        }
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -598,7 +611,21 @@ public class ManaStaff extends javax.swing.JFrame {
         txtmanv.setText("");
         txtmk.setText("");
         txtmk2.setText("");
+        rdotruongphong.setSelected(true);
         this.row=-1;
         this.updateStatus();
+    }
+    
+    private boolean checkAll() {
+        String manv = txtmanv.getText();
+        String mk = txtmk.getText();
+        String mk2 = txtmk2.getText();
+        String hoten = txthoten.getText();
+        if(manv.length()==0||mk.length()==0||mk2.length()==0||hoten.length()==0) {
+            MsgBox.alert(this, "Dữ liệu không được để trống !");
+            return false;
+        } else {
+            return true;
+        }
     }
 }

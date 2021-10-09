@@ -134,6 +134,8 @@ public class ManaCourse extends javax.swing.JFrame {
 
         jLabel3.setText("Ngày khai giảng");
 
+        txtngaykg.setText("0000-00-00");
+
         jLabel4.setText("Học phí");
 
         jLabel5.setText("Thời lượng");
@@ -405,11 +407,19 @@ public class ManaCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_cboChuyendeActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        insert();
+        if(checkAll()==false){
+            return;
+        } else {
+            insert();
+        }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        update();
+        if(checkAll()==false){
+            return;
+        } else {
+            update();
+        }
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -548,18 +558,12 @@ public class ManaCourse extends javax.swing.JFrame {
 
     private void update() {
         Course nv = getForm();
-        String tencd = txtchuyende.getText();
-        if (tencd.length() == 0) {
-            MsgBox.alert(this, "Không được để trống dữ liệu !");
-            return;
-        } else {
-            try {
-                dao.update(nv);
-                this.fillTable();
-                MsgBox.alert(this, "Cập nhật thành công !");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Cập nhật thất bại !");
-            }
+        try {
+            dao.update(nv);
+            this.fillTable();
+            MsgBox.alert(this, "Cập nhật thành công !");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại !");
         }
     }
 
@@ -696,5 +700,15 @@ public class ManaCourse extends javax.swing.JFrame {
         this.row = -1;
         this.updateStatus();
         tabs.setSelectedIndex(1);
+    }
+
+    private boolean checkAll() {
+        String ngaykg = txtngaykg.getText();
+        if (ngaykg.length() == 0) {
+            MsgBox.alert(this, "Không được để trống dữ liệu !");
+            return false;
+        } else {
+            return true;
+        }
     }
 }
