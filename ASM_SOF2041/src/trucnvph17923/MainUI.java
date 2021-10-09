@@ -419,7 +419,12 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_mneudoimatkhauActionPerformed
 
     private void mnuloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuloginActionPerformed
-        openDangnhap();
+        if(Auth.isLogin()) {
+           MsgBox.alert(this, "Bạn đã đăng nhập !");
+           return;
+        } else {
+            openDangnhap();
+        }
     }//GEN-LAST:event_mnuloginActionPerformed
 
     private void mnuhdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuhdActionPerformed

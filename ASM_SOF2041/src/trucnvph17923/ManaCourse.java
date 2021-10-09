@@ -131,6 +131,7 @@ public class ManaCourse extends javax.swing.JFrame {
         jLabel2.setText("Chuyên đề");
 
         txtchuyende.setEditable(false);
+        txtchuyende.setEnabled(false);
 
         jLabel3.setText("Ngày khai giảng");
 
@@ -141,16 +142,20 @@ public class ManaCourse extends javax.swing.JFrame {
         jLabel5.setText("Thời lượng");
 
         txthocphi.setEditable(false);
+        txthocphi.setEnabled(false);
 
         txtthoiluong.setEditable(false);
+        txtthoiluong.setEnabled(false);
 
         jLabel6.setText("Người tạo");
 
         jLabel7.setText("Ngày tạo");
 
         txtnguoitao.setEditable(false);
+        txtnguoitao.setEnabled(false);
 
         txtngaytao.setEditable(false);
+        txtngaytao.setEnabled(false);
 
         jLabel8.setText("Ghi chú");
 
@@ -676,6 +681,7 @@ public class ManaCourse extends javax.swing.JFrame {
     private void clear() {
         Course nv = new Course();
         this.setForm(nv);
+        txtngaykg.setText("0000-00-00");
         this.row = -1;
         this.updateStatus();
     }
