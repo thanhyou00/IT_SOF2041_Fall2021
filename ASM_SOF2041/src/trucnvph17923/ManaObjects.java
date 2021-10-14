@@ -45,7 +45,7 @@ public class ManaObjects extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tabs = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
+        pncapnhat = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         lblhinh = new javax.swing.JLabel();
@@ -68,7 +68,7 @@ public class ManaObjects extends javax.swing.JFrame {
         btnpre = new javax.swing.JButton();
         btnnext = new javax.swing.JButton();
         btnlast = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        pndanhsach = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblchuyende = new javax.swing.JTable();
 
@@ -76,10 +76,7 @@ public class ManaObjects extends javax.swing.JFrame {
         setTitle("EDUSYS - QUẢN LÝ CHUYÊN ĐỀ");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("QUẢN LÝ CHUYÊN ĐỀ");
 
         jLabel2.setText("Hình Logo");
@@ -178,13 +175,13 @@ public class ManaObjects extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pncapnhatLayout = new javax.swing.GroupLayout(pncapnhat);
+        pncapnhat.setLayout(pncapnhatLayout);
+        pncapnhatLayout.setHorizontalGroup(
+            pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pncapnhatLayout.createSequentialGroup()
+                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pncapnhatLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(btnthem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,17 +198,17 @@ public class ManaObjects extends javax.swing.JFrame {
                         .addComponent(btnnext)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnlast))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pncapnhatLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pncapnhatLayout.createSequentialGroup()
+                                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel2))
                                 .addGap(79, 79, 79)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(txtmacd, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)
@@ -223,24 +220,24 @@ public class ManaObjects extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnfirst, btnlast, btnnext, btnpre});
+        pncapnhatLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnfirst, btnlast, btnnext, btnpre});
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnmoi, btnsua, btnthem, btnxoa});
+        pncapnhatLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnmoi, btnsua, btnthem, btnxoa});
 
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pncapnhatLayout.setVerticalGroup(
+            pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pncapnhatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pncapnhatLayout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel8))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pncapnhatLayout.createSequentialGroup()
                         .addComponent(txtmacd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
@@ -257,12 +254,12 @@ public class ManaObjects extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnfirst, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnpre)
                     .addComponent(btnnext)
                     .addComponent(btnlast)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnthem)
                         .addComponent(btnsua)
                         .addComponent(btnxoa)
@@ -270,11 +267,11 @@ public class ManaObjects extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnfirst, btnlast, btnnext, btnpre});
+        pncapnhatLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnfirst, btnlast, btnnext, btnpre});
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txthocphi, txtmacd, txttencd, txtthoiluong});
+        pncapnhatLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txthocphi, txtmacd, txttencd, txtthoiluong});
 
-        tabs.addTab("CẬP NHẬT", jPanel2);
+        tabs.addTab("CẬP NHẬT", pncapnhat);
 
         tblchuyende.setBackground(new java.awt.Color(0, 153, 153));
         tblchuyende.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -302,24 +299,24 @@ public class ManaObjects extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblchuyende);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pndanhsachLayout = new javax.swing.GroupLayout(pndanhsach);
+        pndanhsach.setLayout(pndanhsachLayout);
+        pndanhsachLayout.setHorizontalGroup(
+            pndanhsachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pndanhsachLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pndanhsachLayout.setVerticalGroup(
+            pndanhsachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pndanhsachLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        tabs.addTab("DANH SÁCH", jPanel3);
+        tabs.addTab("DANH SÁCH", pndanhsach);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -465,12 +462,12 @@ public class ManaObjects extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblhinh;
+    private javax.swing.JPanel pncapnhat;
+    private javax.swing.JPanel pndanhsach;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblchuyende;
     private javax.swing.JTextField txthocphi;

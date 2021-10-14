@@ -33,8 +33,8 @@ public class LoginUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        pnlogo = new javax.swing.JPanel();
+        lbllogo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -52,12 +52,12 @@ public class LoginUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlogo.setBackground(new java.awt.Color(0, 153, 153));
+        pnlogo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Secure_big.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 420));
+        lbllogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Secure_big.png"))); // NOI18N
+        pnlogo.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 420));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -70,9 +70,9 @@ public class LoginUI extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 260, 40));
+        pnlogo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 260, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
+        getContentPane().add(pnlogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -186,11 +186,11 @@ public class LoginUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lbllogo;
+    private javax.swing.JPanel pnlogo;
     private javax.swing.JTextField txtmanv;
     private javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables

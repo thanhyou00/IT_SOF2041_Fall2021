@@ -40,7 +40,7 @@ public class ManaStaff extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tabs = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        pncapnhat = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtmanv = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -60,7 +60,7 @@ public class ManaStaff extends javax.swing.JFrame {
         btnlast = new javax.swing.JButton();
         txtmk = new javax.swing.JPasswordField();
         txtmk2 = new javax.swing.JPasswordField();
-        jPanel2 = new javax.swing.JPanel();
+        pndanhsach = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblnhanvien = new javax.swing.JTable();
 
@@ -68,10 +68,7 @@ public class ManaStaff extends javax.swing.JFrame {
         setTitle("EDUSYS - QUẢN LÝ NHÂN VIÊN");
         setResizable(false);
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("QUẢN LÝ NHÂN VIÊN QUẢN TRỊ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -165,18 +162,18 @@ public class ManaStaff extends javax.swing.JFrame {
 
         txtmk2.setEchoChar('\u2022');
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pncapnhatLayout = new javax.swing.GroupLayout(pncapnhat);
+        pncapnhat.setLayout(pncapnhatLayout);
+        pncapnhatLayout.setHorizontalGroup(
+            pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pncapnhatLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtmanv)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pncapnhatLayout.createSequentialGroup()
+                        .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(pncapnhatLayout.createSequentialGroup()
                                     .addComponent(rdotruongphong)
                                     .addGap(142, 142, 142)
                                     .addComponent(rdonhanvien))
@@ -185,7 +182,7 @@ public class ManaStaff extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pncapnhatLayout.createSequentialGroup()
                                 .addComponent(btnthem)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnsua, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,16 +204,16 @@ public class ManaStaff extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnfirst, btnlast, btnnext, btnpre});
+        pncapnhatLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnfirst, btnlast, btnnext, btnpre});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnmoi, btnsua, btnthem, btnxoa});
+        pncapnhatLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnmoi, btnsua, btnthem, btnxoa});
 
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pncapnhatLayout.setVerticalGroup(
+            pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pncapnhatLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pncapnhatLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,17 +232,17 @@ public class ManaStaff extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)
                         .addGap(47, 47, 47))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rdotruongphong)
                         .addComponent(rdonhanvien)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnfirst)
                         .addComponent(btnpre)
                         .addComponent(btnnext)
                         .addComponent(btnlast))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pncapnhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnthem)
                         .addComponent(btnsua)
                         .addComponent(btnxoa)
@@ -253,7 +250,7 @@ public class ManaStaff extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        tabs.addTab("CẬP NHẬT", jPanel1);
+        tabs.addTab("CẬP NHẬT", pncapnhat);
 
         tblnhanvien.setBackground(new java.awt.Color(0, 153, 153));
         tblnhanvien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -281,24 +278,24 @@ public class ManaStaff extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblnhanvien);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pndanhsachLayout = new javax.swing.GroupLayout(pndanhsach);
+        pndanhsach.setLayout(pndanhsachLayout);
+        pndanhsachLayout.setHorizontalGroup(
+            pndanhsachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pndanhsachLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pndanhsachLayout.setVerticalGroup(
+            pndanhsachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pndanhsachLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        tabs.addTab("DANH SÁCH", jPanel2);
+        tabs.addTab("DANH SÁCH", pndanhsach);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -443,10 +440,10 @@ public class ManaStaff extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pncapnhat;
+    private javax.swing.JPanel pndanhsach;
     private javax.swing.JRadioButton rdonhanvien;
     private javax.swing.JRadioButton rdotruongphong;
     private javax.swing.JTabbedPane tabs;

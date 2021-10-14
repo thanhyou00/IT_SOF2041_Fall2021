@@ -48,7 +48,7 @@ public class ProgressBarUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnimg = new javax.swing.JPanel();
         prgui = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
 
@@ -57,21 +57,21 @@ public class ProgressBarUI extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnimg.setBackground(new java.awt.Color(0, 153, 153));
+        pnimg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         prgui.setBackground(new java.awt.Color(255, 0, 0));
         prgui.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         prgui.setForeground(new java.awt.Color(0, 153, 204));
         prgui.setValue(1);
         prgui.setStringPainted(true);
-        jPanel1.add(prgui, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 843, 28));
+        pnimg.add(prgui, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 843, 28));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/password.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 985, 510));
+        pnimg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 985, 510));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 985, -1));
+        getContentPane().add(pnimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 985, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -114,7 +114,7 @@ public class ProgressBarUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel pnimg;
     public static javax.swing.JProgressBar prgui;
     // End of variables declaration//GEN-END:variables
 }

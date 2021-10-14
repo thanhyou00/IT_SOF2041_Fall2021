@@ -44,7 +44,7 @@ public class ManaCourse extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        pnchuyende = new javax.swing.JPanel();
         cboChuyende = new javax.swing.JComboBox<>();
         tabs = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -97,13 +97,10 @@ public class ManaCourse extends javax.swing.JFrame {
         setTitle("EDUSYS - QUẢN LÝ KHÓA HỌC");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CHUYÊN ĐỀ");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnchuyende.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         cboChuyende.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,18 +108,18 @@ public class ManaCourse extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnchuyendeLayout = new javax.swing.GroupLayout(pnchuyende);
+        pnchuyende.setLayout(pnchuyendeLayout);
+        pnchuyendeLayout.setHorizontalGroup(
+            pnchuyendeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnchuyendeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cboChuyende, 0, 908, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnchuyendeLayout.setVerticalGroup(
+            pnchuyendeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnchuyendeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cboChuyende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -131,7 +128,6 @@ public class ManaCourse extends javax.swing.JFrame {
         jLabel2.setText("Chuyên đề");
 
         txtchuyende.setEditable(false);
-        txtchuyende.setEnabled(false);
 
         jLabel3.setText("Ngày khai giảng");
 
@@ -142,20 +138,16 @@ public class ManaCourse extends javax.swing.JFrame {
         jLabel5.setText("Thời lượng");
 
         txthocphi.setEditable(false);
-        txthocphi.setEnabled(false);
 
         txtthoiluong.setEditable(false);
-        txtthoiluong.setEnabled(false);
 
         jLabel6.setText("Người tạo");
 
         jLabel7.setText("Ngày tạo");
 
         txtnguoitao.setEditable(false);
-        txtnguoitao.setEnabled(false);
 
         txtngaytao.setEditable(false);
-        txtngaytao.setEnabled(false);
 
         jLabel8.setText("Ghi chú");
 
@@ -375,7 +367,7 @@ public class ManaCourse extends javax.swing.JFrame {
                     .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnchuyende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -384,7 +376,7 @@ public class ManaCourse extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnchuyende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -512,13 +504,13 @@ public class ManaCourse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JPanel pnchuyende;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblkhoahoc;
     private javax.swing.JTextField txtchuyende;
@@ -550,11 +542,13 @@ public class ManaCourse extends javax.swing.JFrame {
         } else {
             try {
                 dao.insert(nv);
+               // this.updateStatus();
                 this.fillTable();
                 this.clear();
                 MsgBox.alert(this, "Thêm mới thành công !");
                 return;
             } catch (Exception e) {
+                e.printStackTrace();
                 MsgBox.alert(this, "Thêm mới thất bại !");
                 return;
             }
@@ -576,17 +570,19 @@ public class ManaCourse extends javax.swing.JFrame {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xóa khóa học !");
         } else {
-            String tencd = txtchuyende.getText();
-            if (tencd.length() == 0) {
+            Course kh = new Course();
+            String makh = String.valueOf(tblkhoahoc.getValueAt(this.row, 0));
+            if (makh.length() == 0) {
                 MsgBox.alert(this, "Không được để trống dữ liệu !");
                 return;
             } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa khóa học này ?")) {
                 try {
-                    dao.delete(tencd);
+                    dao.delete(makh);
                     this.fillTable();
                     this.clear();
                     MsgBox.alert(this, "Xóa thành công !");
                 } catch (Exception e) {
+                    
                     MsgBox.alert(this, "Xóa thất bại !");
                 }
             }
@@ -653,12 +649,14 @@ public class ManaCourse extends javax.swing.JFrame {
 
     private Course getForm() {
         Course kh = new Course();
+        Objects chuyenDe = (Objects) cboChuyende.getSelectedItem();
         kh.setGhichu(txtghichu.getText());
         kh.setNgaytao(txtngaytao.getText());
         kh.setNgaykhaigiang(txtngaykg.getText());
         kh.setHocphi(Float.parseFloat(txthocphi.getText()));
         kh.setThoiluong(Integer.parseInt(txtthoiluong.getText()));
-        kh.setManv(txtngaytao.getText());
+        kh.setManv(txtnguoitao.getText());
+        kh.setMacd(chuyenDe.getMacd());
         return kh;
     }
 
@@ -667,7 +665,10 @@ public class ManaCourse extends javax.swing.JFrame {
         boolean first = this.row == 0;
         boolean last = this.row == tblkhoahoc.getRowCount() - 1;
         // Trạng thái form
-        // txtma.setEditable(!edit);
+        txtnguoitao.setEditable(!edit);
+        txthocphi.setEditable(!edit);
+        txtthoiluong.setEditable(!edit);
+        txtngaytao.setEditable(!edit);
         btnthem.setEnabled(!edit);
         btnsua.setEnabled(edit);
         btnxoa.setEnabled(edit);
@@ -710,7 +711,11 @@ public class ManaCourse extends javax.swing.JFrame {
 
     private boolean checkAll() {
         String ngaykg = txtngaykg.getText();
-        if (ngaykg.length() == 0) {
+        String ngaytao = txtngaytao.getText();
+        String nguoitao = txtnguoitao.getText();
+        String hocphi = txthocphi.getText();
+        String thoiluong = txtthoiluong.getText();
+        if (ngaykg.length() == 0||ngaytao.length()==0||nguoitao.length()==0||hocphi.length()==0||thoiluong.length()==0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return false;
         } else {
