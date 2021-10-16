@@ -1,6 +1,6 @@
 package DAO;
 
-import Entity.Course;
+import Entity.KhoaHoc;
 import java.util.List;
 import JDBCHelper.JDBCHelper;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Nguyen Truc
  */
-public class KhoaHocDAO extends EduSysDAO<Course, String> {
+public class KhoaHocDAO extends EduSysDAO<KhoaHoc, String> {
 
     String insert = "INSERT INTO KHOAHOC(MACD,HOCPHI,THOILUONG,NGAYKG,GHICHU,MANV,NGAYTAO) VALUES(?,?,?,?,?,?,?)";
     String update = "UPDATE KHOAHOC SET MACD = ? , HOCPHI = ? , THOILUONG = ?, NGAYKG = ?, GHICHU = ?, MANV = ? ,NGAYTAO = ? WHERE MAKH = ?";
@@ -20,13 +20,13 @@ public class KhoaHocDAO extends EduSysDAO<Course, String> {
     String selectbyId = "SELECT *FROM KHOAHOC WHERE MAKH = ?";
 
     @Override
-    public void insert(Course entity) {
+    public void insert(KhoaHoc entity) {
         JDBCHelper.update(insert, entity.getMacd(), entity.getHocphi(), entity.getThoiluong(), entity.getNgaykhaigiang(), entity.getGhichu(),
                  entity.getManv(), entity.getNgaytao());
     }
 
     @Override
-    public void update(Course entity) {
+    public void update(KhoaHoc entity) {
         JDBCHelper.update(update, entity.getMacd(), entity.getHocphi(), entity.getThoiluong(), entity.getNgaykhaigiang(), entity.getGhichu(),
                 entity.getManv(), entity.getNgaytao(), entity.getMakh());
     }
@@ -37,8 +37,8 @@ public class KhoaHocDAO extends EduSysDAO<Course, String> {
     }
 
     @Override
-    public Course selectbyId(String id) {
-        List<Course> list = this.selectbySql(selectbyId, id);
+    public KhoaHoc selectbyId(String id) {
+        List<KhoaHoc> list = this.selectbySql(selectbyId, id);
         if (list.isEmpty()) {
             return null;
         }
@@ -46,17 +46,17 @@ public class KhoaHocDAO extends EduSysDAO<Course, String> {
     }
 
     @Override
-    public List<Course> selectAll() {
+    public List<KhoaHoc> selectAll() {
         return this.selectbySql(selectAll);
     }
 
     @Override
-    protected List<Course> selectbySql(String sql, Object... args) {
-        List<Course> list = new ArrayList<Course>();
+    protected List<KhoaHoc> selectbySql(String sql, Object... args) {
+        List<KhoaHoc> list = new ArrayList<KhoaHoc>();
         try {
             ResultSet rs = JDBCHelper.query(sql, args);
             while (rs.next()) {
-                Course kh = new Course();
+                KhoaHoc kh = new KhoaHoc();
                 kh.setMakh(rs.getInt("MAKH"));
                 kh.setMacd(rs.getString("MACD"));
                 kh.setHocphi(rs.getFloat("HOCPHI"));
@@ -74,7 +74,7 @@ public class KhoaHocDAO extends EduSysDAO<Course, String> {
         }
     }
 
-    public List<Course> selectbyChuyende(String macd) {
+    public List<KhoaHoc> selectbyChuyende(String macd) {
         String sql = "SELECT *FROM KHOAHOC WHERE MACD = ?";
         return this.selectbySql(sql, macd);
     }

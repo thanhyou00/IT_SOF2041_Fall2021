@@ -6,7 +6,7 @@ package Entity;
  *
  * @author Nguyen Truc
  */
-public class Objects {
+public class ChuyenDe {
     private String macd;
     private String tencd;
     private float hocphi;
@@ -14,10 +14,10 @@ public class Objects {
     private String hinh;
     private String mota;
 
-    public Objects() {
+    public ChuyenDe() {
     }
 
-    public Objects(String macd, String tencd, float hocphi, int thoiluong, String hinh, String mota) {
+    public ChuyenDe(String macd, String tencd, float hocphi, int thoiluong, String hinh, String mota) {
         this.macd = macd;
         this.tencd = tencd;
         this.hocphi = hocphi;
@@ -81,7 +81,7 @@ public class Objects {
 
     @Override
     public boolean equals(Object obj) {
-        Objects other = (Objects) obj;
+        ChuyenDe other = (ChuyenDe) obj;
         return other.getMacd().equals(this.getMacd());
     }
     

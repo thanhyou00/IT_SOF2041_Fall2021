@@ -1,7 +1,7 @@
 
 package DAO;
 
-import Entity.Learner;
+import Entity.NguoiHoc;
 import java.util.List;
 import JDBCHelper.JDBCHelper;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Nguyen Truc
  */
-public class NguoiHocDAO extends EduSysDAO<Learner, String>{
+public class NguoiHocDAO extends EduSysDAO<NguoiHoc, String>{
 
     String insert = "INSERT INTO NGUOIHOC(MANH,HOTEN,GIOITINH,NGAYSINH,EMAIL,DIENTHOAI,GHICHU,MANV,NGAYDK) VALUES(?,?,?,?,?,?,?,?,?)";
     String update = "UPDATE NGUOIHOC SET HOTEN = ?,GIOITINH=?,NGAYSINH=?,EMAIL=?,DIENTHOAI=?,GHICHU=? WHERE MANH = ? ";
@@ -21,13 +21,13 @@ public class NguoiHocDAO extends EduSysDAO<Learner, String>{
     
     
     @Override
-    public void insert(Learner entity) {
+    public void insert(NguoiHoc entity) {
        JDBCHelper.update(insert,entity.getManh(),entity.getHoten(),entity.getGioitinh(),entity.getNgaysinh(),entity.getEmail(),entity.getDienthoai(),
                entity.getGhichu(),entity.getManv(),entity.getNgaydangky());
     }
 
     @Override
-    public void update(Learner entity) {
+    public void update(NguoiHoc entity) {
         JDBCHelper.update(update, entity.getHoten(),entity.getGioitinh(),entity.getNgaysinh(),entity.getEmail(),entity.getDienthoai(),entity.getGhichu(),
         entity.getManh());    }
 
@@ -37,8 +37,8 @@ public class NguoiHocDAO extends EduSysDAO<Learner, String>{
     }
 
     @Override
-    public Learner selectbyId(String id) {
-        List<Learner> list = this.selectbySql(selectbyId, id);
+    public NguoiHoc selectbyId(String id) {
+        List<NguoiHoc> list = this.selectbySql(selectbyId, id);
         if(list.isEmpty()){
             return null;
         } 
@@ -46,17 +46,17 @@ public class NguoiHocDAO extends EduSysDAO<Learner, String>{
     }
 
     @Override
-    public List<Learner> selectAll() {
+    public List<NguoiHoc> selectAll() {
          return this.selectbySql(selectAll);
     }
 
     @Override
-    protected List<Learner> selectbySql(String sql, Object... args) {
-            List<Learner> list = new ArrayList<Learner>();
+    protected List<NguoiHoc> selectbySql(String sql, Object... args) {
+            List<NguoiHoc> list = new ArrayList<NguoiHoc>();
         try {
             ResultSet rs = JDBCHelper.query(sql, args);
             while(rs.next()) {
-                Learner ln = new Learner();
+                NguoiHoc ln = new NguoiHoc();
                 ln.setDienthoai(rs.getString("DIENTHOAI"));
                 ln.setEmail(rs.getString("EMAIL"));
                 ln.setGhichu(rs.getString("GHICHU"));
@@ -75,12 +75,12 @@ public class NguoiHocDAO extends EduSysDAO<Learner, String>{
         }
     }
     
-    public List<Learner> selectbyKeyword(String keyword) {
+    public List<NguoiHoc> selectbyKeyword(String keyword) {
         String sql = "SELECT *FROM NGUOIHOC WHERE HOTEN LIKE ?";
         return this.selectbySql(sql,"%"+keyword+"%");
     }
     
-    public List<Learner> selectNotinCourse(int makh, String keyword) {
+    public List<NguoiHoc> selectNotinCourse(int makh, String keyword) {
         String sql = "SELECT *FROM NGUOIHOC WHERE HOTEN LIKE ? AND MANH NOT IN "
                 + "(SELECT MANH FROM HOCVIEN WHERE MAKH = ?)";
         return this.selectbySql(sql,"%"+keyword+"%",makh);

@@ -1,14 +1,13 @@
-
 package trucnvph17923;
 
 import DAO.ChuyenDeDAO;
 import DAO.HocVienDAO;
 import DAO.KhoaHocDAO;
 import DAO.NguoiHocDAO;
-import Entity.Course;
-import Entity.Learner;
-import Entity.Objects;
-import Entity.Students;
+import Entity.KhoaHoc;
+import Entity.NguoiHoc;
+import Entity.ChuyenDe;
+import Entity.HocVien;
 import Utils.Auth;
 import Utils.MsgBox;
 import java.util.List;
@@ -24,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class ManaStudents extends javax.swing.JFrame {
 
     /**
-     * Creates new form ManaStudents
+     * Done Testing
      */
     public ManaStudents() {
         initComponents();
@@ -184,6 +183,17 @@ public class ManaStudents extends javax.swing.JFrame {
 
         pntimkiem.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        txttimkiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttimkiemActionPerformed(evt);
+            }
+        });
+        txttimkiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txttimkiemKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout pntimkiemLayout = new javax.swing.GroupLayout(pntimkiem);
         pntimkiem.setLayout(pntimkiemLayout);
         pntimkiemLayout.setHorizontalGroup(
@@ -201,9 +211,6 @@ public class ManaStudents extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        tblnguoihoc.setBackground(new java.awt.Color(0, 153, 153));
-        tblnguoihoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tblnguoihoc.setForeground(new java.awt.Color(255, 255, 255));
         tblnguoihoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -332,7 +339,12 @@ public class ManaStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_tblnguoihocMouseClicked
 
     private void btncapnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncapnhatActionPerformed
-        updateDiem();
+        if (check() == false) {
+            this.fillTableHocvien();
+            return;
+        } else {
+            updateDiem();
+        }
     }//GEN-LAST:event_btncapnhatActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -346,6 +358,14 @@ public class ManaStudents extends javax.swing.JFrame {
     private void cbochuyendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbochuyendeActionPerformed
         fillComboKhoahoc();
     }//GEN-LAST:event_cbochuyendeActionPerformed
+
+    private void txttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimkiemActionPerformed
+
+    }//GEN-LAST:event_txttimkiemActionPerformed
+
+    private void txttimkiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimkiemKeyReleased
+        fillTableNguoihoc();
+    }//GEN-LAST:event_txttimkiemKeyReleased
 
     /**
      * @param args the command line arguments
@@ -409,6 +429,7 @@ public class ManaStudents extends javax.swing.JFrame {
     KhoaHocDAO khdao = new KhoaHocDAO();
     NguoiHocDAO nhdao = new NguoiHocDAO();
     HocVienDAO hvdao = new HocVienDAO();
+
     private void init() {
         this.fillComboChuyende();
     }
@@ -416,8 +437,8 @@ public class ManaStudents extends javax.swing.JFrame {
     private void fillComboChuyende() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbochuyende.getModel();
         model.removeAllElements();
-        List<Objects> list = cddao.selectAll();
-        for (Objects cd : list) {
+        List<ChuyenDe> list = cddao.selectAll();
+        for (ChuyenDe cd : list) {
             model.addElement(cd);
         }
         this.fillComboKhoahoc();
@@ -426,10 +447,10 @@ public class ManaStudents extends javax.swing.JFrame {
     private void fillComboKhoahoc() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbokhoahoc.getModel();
         model.removeAllElements();
-        Objects cd = (Objects) cbochuyende.getSelectedItem();
-        if(cd!=null){
-            List<Course> list = khdao.selectbyChuyende(cd.getMacd());
-            for (Course kh : list) {
+        ChuyenDe cd = (ChuyenDe) cbochuyende.getSelectedItem();
+        if (cd != null) {
+            List<KhoaHoc> list = khdao.selectbyChuyende(cd.getMacd());
+            for (KhoaHoc kh : list) {
                 model.addElement(kh);
             }
         }
@@ -439,14 +460,14 @@ public class ManaStudents extends javax.swing.JFrame {
     private void fillTableHocvien() {
         DefaultTableModel model = (DefaultTableModel) tblhocvien.getModel();
         model.setRowCount(0);
-        Course kh = (Course) cbokhoahoc.getSelectedItem();
-        if(kh!=null) {
-            List<Students> list = hvdao.selectByKhoahoc(kh.getMakh());
-            for (int i = 0; i <list.size(); i++) {
-                Students hv = list.get(i);
-                String hoten  = nhdao.selectbyId(hv.getManh()).getHoten();
+        KhoaHoc kh = (KhoaHoc) cbokhoahoc.getSelectedItem();
+        if (kh != null) {
+            List<HocVien> list = hvdao.selectByKhoahoc(kh.getMakh());
+            for (int i = 0; i < list.size(); i++) {
+                HocVien hv = list.get(i);
+                String hoten = nhdao.selectbyId(hv.getManh()).getHoten();
                 model.addRow(new Object[]{
-                    i+1,hv.getMahv(),hv.getManh(),hoten,hv.getDiem()
+                    i + 1, hv.getMahv(), hv.getManh(), hoten, hv.getDiem()
                 });
             }
             this.fillTableNguoihoc();
@@ -456,20 +477,21 @@ public class ManaStudents extends javax.swing.JFrame {
     private void fillTableNguoihoc() {
         DefaultTableModel model = (DefaultTableModel) tblnguoihoc.getModel();
         model.setRowCount(0);
-        Course kh = (Course) cbokhoahoc.getSelectedItem();
+        KhoaHoc kh = (KhoaHoc) cbokhoahoc.getSelectedItem();
         String keyword = txttimkiem.getText();
-        List<Learner> list = nhdao.selectNotinCourse(kh.getMakh(), keyword);
-        for (Learner nh : list) {
+        List<NguoiHoc> list = nhdao.selectNotinCourse(kh.getMakh(), keyword);
+        for (NguoiHoc nh : list) {
             model.addRow(new Object[]{
-                nh.getManh(),nh.getHoten(),nh.getGioitinh()?"Nam":"Nữ",
-                nh.getNgaysinh(),nh.getDienthoai(),nh.getEmail()
+                nh.getManh(), nh.getHoten(), nh.getGioitinh() ? "Nam" : "Nữ",
+                nh.getNgaysinh(), nh.getDienthoai(), nh.getEmail()
             });
         }
     }
+
     private void addHocvien() {
-        Course kh = (Course) cbokhoahoc.getSelectedItem();
-        for(int row : tblnguoihoc.getSelectedRows()) {
-            Students hv = new Students();
+        KhoaHoc kh = (KhoaHoc) cbokhoahoc.getSelectedItem();
+        for (int row : tblnguoihoc.getSelectedRows()) {
+            HocVien hv = new HocVien();
             hv.setMakh(kh.getMakh());
             hv.setDiem(0);
             hv.setManh(tblnguoihoc.getValueAt(row, 0).toString());
@@ -478,28 +500,44 @@ public class ManaStudents extends javax.swing.JFrame {
         this.fillTableHocvien();
         this.tabs.setSelectedIndex(0);
     }
-    
+
     private void deleteHocvien() {
-        if(!Auth.isManager()) {
+        if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xóa học viên !");
         } else {
-            if(MsgBox.confirm(this, "Bạn muốn xóa các học viên được chọn ?")) {
-                for(int row : tblhocvien.getSelectedRows()) {
+            if (MsgBox.confirm(this, "Bạn muốn xóa các học viên được chọn ?")) {
+                for (int row : tblhocvien.getSelectedRows()) {
                     int mahv = (int) tblhocvien.getValueAt(row, 1);
-                    hvdao.delete(mahv+"");
+                    hvdao.delete(mahv + "");
                 }
             }
             this.fillTableHocvien();
         }
     }
-    
+
     private void updateDiem() {
-        for(int i=0;i<tblhocvien.getRowCount();i++){
+        for (int i = 0; i < tblhocvien.getRowCount(); i++) {
             String mahv = tblhocvien.getValueAt(i, 1).toString();
-            Students hv = hvdao.selectbyId(mahv);
+            HocVien hv = hvdao.selectbyId(mahv);
             hv.setDiem(Float.valueOf(tblhocvien.getValueAt(i, 4).toString()));
             hvdao.update(hv);
         }
         MsgBox.alert(this, "Cập nhật điểm thành công !");
+    }
+
+    private boolean check() {
+        try {
+            for (int i = 0; i < tblhocvien.getRowCount(); i++) {
+                float diem = Float.valueOf(tblhocvien.getValueAt(i, 4).toString());
+                if (diem < 0 || diem > 10) {
+                    MsgBox.alert(this, "Điểm phải là số từ 0 đến 10");
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Điểm không được để trống !");
+            return false;
+        }
+        return true;
     }
 }

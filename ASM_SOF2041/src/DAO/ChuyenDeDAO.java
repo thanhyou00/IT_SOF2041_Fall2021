@@ -1,6 +1,6 @@
 package DAO;
 
-import Entity.Objects;
+import Entity.ChuyenDe;
 import java.util.List;
 import JDBCHelper.JDBCHelper;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Nguyen Truc
  */
-public class ChuyenDeDAO extends EduSysDAO<Objects, String> {
+public class ChuyenDeDAO extends EduSysDAO<ChuyenDe, String> {
 
     String insert = "INSERT INTO CHUYENDE(MACD,TENCD,HOCPHI,THOILUONG,HINH,MOTA) VALUES(?,?,?,?,?,?)";
     String update = "UPDATE CHUYENDE SET TENCD = ? , HOCPHI = ? , THOILUONG = ?, HINH = ?, MOTA = ? WHERE MACD = ?";
@@ -19,12 +19,12 @@ public class ChuyenDeDAO extends EduSysDAO<Objects, String> {
     String selectbyId = "SELECT *FROM CHUYENDE WHERE MACD = ?";
 
     @Override
-    public void insert(Objects entity) {
+    public void insert(ChuyenDe entity) {
         JDBCHelper.update(insert, entity.getMacd(), entity.getTencd(), entity.getHocphi(), entity.getThoiluong(), entity.getHinh(), entity.getMota());
     }
 
     @Override
-    public void update(Objects entity) {
+    public void update(ChuyenDe entity) {
         JDBCHelper.update(update, entity.getTencd(), entity.getHocphi(), entity.getThoiluong(), entity.getHinh(), entity.getMota(), entity.getMacd());
     }
 
@@ -34,8 +34,8 @@ public class ChuyenDeDAO extends EduSysDAO<Objects, String> {
     }
 
     @Override
-    public Objects selectbyId(String id) {
-        List<Objects> list = this.selectbySql(selectbyId, id);
+    public ChuyenDe selectbyId(String id) {
+        List<ChuyenDe> list = this.selectbySql(selectbyId, id);
         if (list.isEmpty()) {
             return null;
         }
@@ -43,17 +43,17 @@ public class ChuyenDeDAO extends EduSysDAO<Objects, String> {
     }
 
     @Override
-    public List<Objects> selectAll() {
+    public List<ChuyenDe> selectAll() {
         return this.selectbySql(selectAll);
     }
 
     @Override
-    protected List<Objects> selectbySql(String sql, Object... args) {
-        List<Objects> list = new ArrayList<Objects>();
+    protected List<ChuyenDe> selectbySql(String sql, Object... args) {
+        List<ChuyenDe> list = new ArrayList<ChuyenDe>();
         try {
             ResultSet rs = JDBCHelper.query(sql, args);
             while (rs.next()) {
-                Objects cd = new Objects();
+                ChuyenDe cd = new ChuyenDe();
                 cd.setMacd(rs.getString("MACD"));
                 cd.setTencd(rs.getString("TENCD"));
                 cd.setThoiluong(rs.getInt("THOILUONG"));

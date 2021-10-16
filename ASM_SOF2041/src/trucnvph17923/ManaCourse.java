@@ -3,8 +3,8 @@ package trucnvph17923;
 import DAO.ChuyenDeDAO;
 import DAO.KhoaHocDAO;
 import DAO.NhanVienDAO;
-import Entity.Course;
-import Entity.Objects;
+import Entity.KhoaHoc;
+import Entity.ChuyenDe;
 import Utils.Auth;
 import Utils.MsgBox;
 import java.util.List;
@@ -312,9 +312,6 @@ public class ManaCourse extends javax.swing.JFrame {
 
         tabs.addTab("CẬP NHẬT", jPanel3);
 
-        tblkhoahoc.setBackground(new java.awt.Color(0, 153, 153));
-        tblkhoahoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tblkhoahoc.setForeground(new java.awt.Color(255, 255, 255));
         tblkhoahoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -534,7 +531,7 @@ public class ManaCourse extends javax.swing.JFrame {
     }
 
     private void insert() {
-        Course nv = getForm();
+        KhoaHoc nv = getForm();
         String tencd = txtchuyende.getText();
         if (tencd.length() == 0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
@@ -556,7 +553,7 @@ public class ManaCourse extends javax.swing.JFrame {
     }
 
     private void update() {
-        Course nv = getForm();
+        KhoaHoc nv = getForm();
         try {
             dao.update(nv);
             this.fillTable();
@@ -570,7 +567,7 @@ public class ManaCourse extends javax.swing.JFrame {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xóa khóa học !");
         } else {
-            Course kh = new Course();
+            KhoaHoc kh = new KhoaHoc();
             String makh = String.valueOf(tblkhoahoc.getValueAt(this.row, 0));
             if (makh.length() == 0) {
                 MsgBox.alert(this, "Không được để trống dữ liệu !");
@@ -591,7 +588,7 @@ public class ManaCourse extends javax.swing.JFrame {
 
     private void edit() {
         String makh = tblkhoahoc.getValueAt(row, 0).toString();
-        Course kh = dao.selectbyId(makh);
+        KhoaHoc kh = dao.selectbyId(makh);
         this.setForm(kh);
         tabs.setSelectedIndex(0);
         this.updateStatus();
@@ -625,9 +622,9 @@ public class ManaCourse extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblkhoahoc.getModel();
         model.setRowCount(0);
         try {
-            Objects cd = (Objects) cboChuyende.getSelectedItem();
-            List<Course> list = dao.selectbyChuyende(cd.getMacd());
-            for (Course kh : list) {
+            ChuyenDe cd = (ChuyenDe) cboChuyende.getSelectedItem();
+            List<KhoaHoc> list = dao.selectbyChuyende(cd.getMacd());
+            for (KhoaHoc kh : list) {
                 Object[] rows = {
                     kh.getMakh(), kh.getThoiluong(), kh.getHocphi(), kh.getNgaykhaigiang(), kh.getManv(), kh.getNgaytao()
                 };
@@ -638,7 +635,7 @@ public class ManaCourse extends javax.swing.JFrame {
         }
     }
 
-    private void setForm(Course kh) {
+    private void setForm(KhoaHoc kh) {
         txtghichu.setText(kh.getGhichu());
         txtngaytao.setText(kh.getNgaytao());
         txtngaykg.setText(kh.getNgaykhaigiang());
@@ -647,9 +644,9 @@ public class ManaCourse extends javax.swing.JFrame {
         txtnguoitao.setText(kh.getManv());
     }
 
-    private Course getForm() {
-        Course kh = new Course();
-        Objects chuyenDe = (Objects) cboChuyende.getSelectedItem();
+    private KhoaHoc getForm() {
+        KhoaHoc kh = new KhoaHoc();
+        ChuyenDe chuyenDe = (ChuyenDe) cboChuyende.getSelectedItem();
         kh.setGhichu(txtghichu.getText());
         kh.setNgaytao(txtngaytao.getText());
         kh.setNgaykhaigiang(txtngaykg.getText());
@@ -680,7 +677,7 @@ public class ManaCourse extends javax.swing.JFrame {
     }
 
     private void clear() {
-        Course nv = new Course();
+        KhoaHoc nv = new KhoaHoc();
         this.setForm(nv);
         txtngaykg.setText("0000-00-00");
         this.row = -1;
@@ -690,14 +687,14 @@ public class ManaCourse extends javax.swing.JFrame {
     private void fillComboboxChuyende() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboChuyende.getModel();
         model.removeAllElements();
-        List<Objects> list = cddao.selectAll();
-        for (Objects cd : list) {
+        List<ChuyenDe> list = cddao.selectAll();
+        for (ChuyenDe cd : list) {
             model.addElement(cd);
         }
     }
 
     private void chonChuyende() {
-        Objects cd = (Objects) cboChuyende.getSelectedItem();
+        ChuyenDe cd = (ChuyenDe) cboChuyende.getSelectedItem();
         txtthoiluong.setText(cd.getThoiluong() + "");
         txthocphi.setText(cd.getHocphi() + "");
         txtchuyende.setText(cd.getTencd());
@@ -715,6 +712,18 @@ public class ManaCourse extends javax.swing.JFrame {
         String nguoitao = txtnguoitao.getText();
         String hocphi = txthocphi.getText();
         String thoiluong = txtthoiluong.getText();
+        try {
+            Float.parseFloat(hocphi);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Học phí phải là số !");
+            return false;
+        }
+        try {
+            Integer.parseInt(thoiluong);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thời lượng phải là số !");
+            return false;
+        }
         if (ngaykg.length() == 0||ngaytao.length()==0||nguoitao.length()==0||hocphi.length()==0||thoiluong.length()==0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return false;

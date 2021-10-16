@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author Nguyen Truc
  */
-public class Learner {
+public class NguoiHoc {
     private String manh;
     private String hoten;
     private Boolean gioitinh;
@@ -19,10 +19,10 @@ public class Learner {
     private String manv;
     private String ngaydangky;
 
-    public Learner() {
+    public NguoiHoc() {
     }
 
-    public Learner(String manh, String hoten, Boolean gioitinh, String ngaysinh, String email, String dienthoai, String ghichu, String manv, String ngaydangky) {
+    public NguoiHoc(String manh, String hoten, Boolean gioitinh, String ngaysinh, String email, String dienthoai, String ghichu, String manv, String ngaydangky) {
         this.manh = manh;
         this.hoten = hoten;
         this.gioitinh = gioitinh;

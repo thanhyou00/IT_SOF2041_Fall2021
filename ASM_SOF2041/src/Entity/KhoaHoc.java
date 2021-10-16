@@ -5,7 +5,7 @@ package Entity;
  *
  * @author Nguyen Truc
  */
-public class Course {
+public class KhoaHoc {
     private int makh;
     private String macd;
     private float hocphi;
@@ -15,10 +15,10 @@ public class Course {
     private String manv;
     private String ngaytao;
 
-    public Course() {
+    public KhoaHoc() {
     }
 
-    public Course(int makh, String macd, float hocphi, int thoiluong, String ngaykhaigiang, String ghichu, String manv, String ngaytao) {
+    public KhoaHoc(int makh, String macd, float hocphi, int thoiluong, String ngaykhaigiang, String ghichu, String manv, String ngaytao) {
         this.makh = makh;
         this.macd = macd;
         this.hocphi = hocphi;

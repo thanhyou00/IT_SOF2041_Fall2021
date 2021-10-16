@@ -6,16 +6,16 @@ package Entity;
  *
  * @author Nguyen Truc
  */
-public class Staff {
+public class NhanVien {
     private String manv;
     private String matkhau;
     private String hoten;
     private Boolean vaitro;
 
-    public Staff() {
+    public NhanVien() {
     }
 
-    public Staff(String manv, String matkhau, String hoten, Boolean vaitro) {
+    public NhanVien(String manv, String matkhau, String hoten, Boolean vaitro) {
         this.manv = manv;
         this.matkhau = matkhau;
         this.hoten = hoten;

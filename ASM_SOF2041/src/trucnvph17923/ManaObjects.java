@@ -1,8 +1,8 @@
 package trucnvph17923;
 
 import DAO.ChuyenDeDAO;
-import Entity.Learner;
-import Entity.Objects;
+import Entity.NguoiHoc;
+import Entity.ChuyenDe;
 import Utils.Auth;
 import Utils.MsgBox;
 import Utils.XImage;
@@ -273,9 +273,6 @@ public class ManaObjects extends javax.swing.JFrame {
 
         tabs.addTab("CẬP NHẬT", pncapnhat);
 
-        tblchuyende.setBackground(new java.awt.Color(0, 153, 153));
-        tblchuyende.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tblchuyende.setForeground(new java.awt.Color(255, 255, 255));
         tblchuyende.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -478,7 +475,7 @@ public class ManaObjects extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void insert() {
-        Objects cd = getForm();
+        ChuyenDe cd = getForm();
         String macd = txtmacd.getText();
         if (macd.equals(cd.getMacd())) {
             MsgBox.alert(this, "Mã chuyên đề đã tồn tại !");
@@ -498,7 +495,7 @@ public class ManaObjects extends javax.swing.JFrame {
     }
 
     private void update() {
-        Objects cd = getForm();
+        ChuyenDe cd = getForm();
             try {
                 dao.update(cd);
                 this.fillTable();
@@ -530,7 +527,7 @@ public class ManaObjects extends javax.swing.JFrame {
 
     private void edit() {
         String macd = (String) tblchuyende.getValueAt(row, 0);
-        Objects cd = dao.selectbyId(macd);
+        ChuyenDe cd = dao.selectbyId(macd);
         this.setForm(cd);
         tabs.setSelectedIndex(0);
         this.updateStatus();
@@ -564,8 +561,8 @@ public class ManaObjects extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblchuyende.getModel();
         model.setRowCount(0);
         try {
-            List<Objects> list = dao.selectAll();
-            for (Objects cd : list) {
+            List<ChuyenDe> list = dao.selectAll();
+            for (ChuyenDe cd : list) {
                 Object[] rows = {
                     cd.getMacd(), cd.getTencd(), cd.getHocphi(), cd.getThoiluong(), cd.getHinh()
                 };
@@ -576,7 +573,7 @@ public class ManaObjects extends javax.swing.JFrame {
         }
     }
 
-    private void setForm(Objects cd) {
+    private void setForm(ChuyenDe cd) {
         txtmacd.setText(cd.getMacd());
         txttencd.setText(cd.getTencd());
         txthocphi.setText(cd.getHocphi() + "");
@@ -588,8 +585,8 @@ public class ManaObjects extends javax.swing.JFrame {
         }
     }
 
-    private Objects getForm() {
-        Objects cd = new Objects();
+    private ChuyenDe getForm() {
+        ChuyenDe cd = new ChuyenDe();
         cd.setMacd(txtmacd.getText());
         cd.setTencd(txttencd.getText());
         cd.setHocphi(Float.parseFloat(txthocphi.getText()));
@@ -616,7 +613,7 @@ public class ManaObjects extends javax.swing.JFrame {
     }
 
     private void clear() {
-        Objects cd = new Objects();
+        ChuyenDe cd = new ChuyenDe();
         this.setForm(cd);
         this.row = -1;
         this.updateStatus();

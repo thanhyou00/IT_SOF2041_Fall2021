@@ -1,6 +1,6 @@
 
 package DAO;
-import Entity.Staff;
+import Entity.NhanVien;
 import java.util.List;
 /**
  *

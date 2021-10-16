@@ -2,7 +2,7 @@ package trucnvph17923;
 
 import DAO.KhoaHocDAO;
 import DAO.ThongKeDAO;
-import Entity.Course;
+import Entity.KhoaHoc;
 import Utils.Auth;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -366,8 +366,8 @@ public class Statistics extends javax.swing.JFrame {
     private void fillComboKhoahoc() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboKhoahoc.getModel();
         model.removeAllElements();
-        List<Course> list = khdao.selectAll();
-        for (Course kh : list) {
+        List<KhoaHoc> list = khdao.selectAll();
+        for (KhoaHoc kh : list) {
             model.addElement(kh);
         }
     }
@@ -375,7 +375,7 @@ public class Statistics extends javax.swing.JFrame {
     private void fillTableBangdiem() {
         DefaultTableModel model = (DefaultTableModel) tblBangdiem.getModel();
         model.setRowCount(0);
-        Course kh = (Course) cboKhoahoc.getSelectedItem();
+        KhoaHoc kh = (KhoaHoc) cboKhoahoc.getSelectedItem();
         List<Object[]> list = dao.getBangDiem(kh.getMakh());
         for (Object[] row : list) {
             float diem = Float.valueOf(row[2].toString());

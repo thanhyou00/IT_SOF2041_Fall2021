@@ -5,7 +5,7 @@ import DAO.NhanVienDAO;
 import javax.swing.ImageIcon;
 import Utils.Auth;
 import Utils.MsgBox;
-import Entity.Staff;
+import Entity.NhanVien;
 import javax.swing.JOptionPane;
 /**
  *

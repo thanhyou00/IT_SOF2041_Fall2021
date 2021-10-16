@@ -2,7 +2,7 @@
 package trucnvph17923;
 
 import DAO.NhanVienDAO;
-import Entity.Staff;
+import Entity.NhanVien;
 import Utils.Auth;
 import static Utils.Auth.clear;
 import Utils.MsgBox;
@@ -252,9 +252,6 @@ public class ManaStaff extends javax.swing.JFrame {
 
         tabs.addTab("CẬP NHẬT", pncapnhat);
 
-        tblnhanvien.setBackground(new java.awt.Color(0, 153, 153));
-        tblnhanvien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tblnhanvien.setForeground(new java.awt.Color(255, 255, 255));
         tblnhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -345,13 +342,16 @@ public class ManaStaff extends javax.swing.JFrame {
     }//GEN-LAST:event_tblnhanvienMouseClicked
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        Staff nv = getForm();
+        String manv = txtmanv.getText();
         if(checkAll()==false) {
             return;
-        } else if(txtmanv.getText().equals(nv.getManv())){
+        } else if(dao.selectbyId(manv)!=null){
             MsgBox.alert(this, "Mã nhân viên đã tồn tại !");
             return;
-        } 
+        } else if(txtmk.getText().length()<6) {
+            MsgBox.alert(this, "Mật khẩu phải ít nhất 6 kí tự !");
+            return;
+        }
         else {
             insert();
         }
@@ -464,7 +464,7 @@ public class ManaStaff extends javax.swing.JFrame {
         this.updateStatus();
     }
     private void insert() {
-        Staff nv = getForm();
+        NhanVien nv = getForm();
         String mk2 = new String(txtmk2.getPassword());
         if(!mk2.equals(nv.getMatkhau())) {
             MsgBox.alert(this, "Xác nhận mật khẩu không đúng");
@@ -484,7 +484,7 @@ public class ManaStaff extends javax.swing.JFrame {
     }
 
     private void update() {
-        Staff nv = getForm();
+        NhanVien nv = getForm();
         String mk2 = new String(txtmk2.getPassword());
         if(!mk2.equals(nv.getMatkhau())){
             MsgBox.alert(this, "Xác nhận mật khẩu không đúng !");
@@ -521,7 +521,7 @@ public class ManaStaff extends javax.swing.JFrame {
 
     private void edit() {
         String manv = (String) tblnhanvien.getValueAt(row, 0);
-        Staff nv = dao.selectbyId(manv);
+        NhanVien nv = dao.selectbyId(manv);
         this.setForm(nv);
         tabs.setSelectedIndex(0);
         this.updateStatus();
@@ -555,8 +555,8 @@ public class ManaStaff extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblnhanvien.getModel();
         model.setRowCount(0);
         try {
-           List<Staff> list = dao.selectAll();
-            for (Staff nv : list) {
+           List<NhanVien> list = dao.selectAll();
+            for (NhanVien nv : list) {
                 Object[] rows = {
                 nv.getManv(),nv.getMatkhau(),nv.getHoten(),nv.getVaitro()?"Trưởng phòng":"Nhân viên"
                 };
@@ -567,7 +567,7 @@ public class ManaStaff extends javax.swing.JFrame {
         }
     }
 
-    private void setForm(Staff nv) {
+    private void setForm(NhanVien nv) {
         txtmanv.setText(nv.getManv());
         txthoten.setText(nv.getHoten());
         txtmk.setText(nv.getMatkhau());
@@ -576,8 +576,8 @@ public class ManaStaff extends javax.swing.JFrame {
         rdonhanvien.setSelected(!nv.getVaitro());
     }
 
-    private Staff getForm() {
-        Staff nv = new Staff();
+    private NhanVien getForm() {
+        NhanVien nv = new NhanVien();
         nv.setManv(txtmanv.getText());
         nv.setHoten(txthoten.getText());
         nv.setMatkhau(new String(txtmk.getPassword()));
@@ -621,8 +621,14 @@ public class ManaStaff extends javax.swing.JFrame {
         if(manv.length()==0||mk.length()==0||mk2.length()==0||hoten.length()==0) {
             MsgBox.alert(this, "Dữ liệu không được để trống !");
             return false;
-        } else {
+        } 
+        else if(!mk.equals(mk2)) {
+            MsgBox.alert(this, "Xác nhận mật khẩu không đúng !");
+            return false;
+        } 
+        else {
             return true;
         }
     }
+    
 }

@@ -1,12 +1,12 @@
 
 package Utils;
-import Entity.Staff;
+import Entity.NhanVien;
 /**
  *
  * @author Nguyen Truc
  */
 public class Auth {
-    public static Staff user = null;
+    public static NhanVien user = null;
     
     public static void clear(){
         Auth.user = null;

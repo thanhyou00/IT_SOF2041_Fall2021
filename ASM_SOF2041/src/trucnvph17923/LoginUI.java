@@ -6,7 +6,7 @@ import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import Entity.Staff;
+import Entity.NhanVien;
 import Utils.Auth;
 import Utils.MsgBox;
 
@@ -198,7 +198,7 @@ public class LoginUI extends javax.swing.JFrame {
     private void dangNhap() {
         String manv = txtmanv.getText();
         String matkhau = new String(txtpass.getPassword());
-        Staff nv = dao.selectbyId(manv);
+        NhanVien nv = dao.selectbyId(manv);
         if(nv==null){
            MsgBox.alert(this, "Sai tên đăng nhập !");
             return;

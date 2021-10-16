@@ -2,7 +2,7 @@
 package trucnvph17923;
 
 import DAO.NguoiHocDAO;
-import Entity.Learner;
+import Entity.NguoiHoc;
 import Utils.Auth;
 import Utils.MsgBox;
 import Utils.XDate;
@@ -287,9 +287,6 @@ public class ManaLearner extends javax.swing.JFrame {
 
         tabs.addTab("CẬP NHẬT", pncapnhat);
 
-        tblnguoihoc.setBackground(new java.awt.Color(0, 153, 153));
-        tblnguoihoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tblnguoihoc.setForeground(new java.awt.Color(255, 255, 255));
         tblnguoihoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -396,7 +393,7 @@ public class ManaLearner extends javax.swing.JFrame {
     }//GEN-LAST:event_rdonamActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        Learner ln =getForm();
+        NguoiHoc ln =getForm();
         if(checkAll()==false) {
             return;
         } else if(txtmanh.getText().equals(ln.getManh())){
@@ -528,7 +525,7 @@ public class ManaLearner extends javax.swing.JFrame {
 
     
     private void insert() {
-        Learner ln = getForm();
+        NguoiHoc ln = getForm();
         String manv = txtmanh.getText();
         if(manv.length()==0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
@@ -548,7 +545,7 @@ public class ManaLearner extends javax.swing.JFrame {
     }
 
     private void update() {
-        Learner ln = getForm();
+        NguoiHoc ln = getForm();
         String manh = txtmanh.getText();
         if(manh.length()==0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
@@ -586,7 +583,7 @@ public class ManaLearner extends javax.swing.JFrame {
 
     private void edit() {
         String manh = (String) tblnguoihoc.getValueAt(row, 0);
-        Learner ln = dao.selectbyId(manh);
+        NguoiHoc ln = dao.selectbyId(manh);
         this.setForm(ln);
         tabs.setSelectedIndex(0);
         this.updateStatus();
@@ -621,8 +618,8 @@ public class ManaLearner extends javax.swing.JFrame {
         model.setRowCount(0);
         try {
            String keyword = txttimkiem.getText();
-           List<Learner> list = dao.selectbyKeyword(keyword);
-            for (Learner ln : list) {
+           List<NguoiHoc> list = dao.selectbyKeyword(keyword);
+            for (NguoiHoc ln : list) {
                 Object[] rows = {
         ln.getManh(),ln.getHoten(),ln.getGioitinh()?"Nam":"Nữ",ln.getNgaysinh(),ln.getEmail(),ln.getDienthoai(),ln.getGhichu(),
         ln.getManv(),ln.getNgaydangky(),
@@ -634,7 +631,7 @@ public class ManaLearner extends javax.swing.JFrame {
         }
     }
 
-    private void setForm(Learner ln) {
+    private void setForm(NguoiHoc ln) {
         txtmanh.setText(ln.getManh());
         txthoten.setText(ln.getHoten());
         txtsdt.setText(ln.getDienthoai());
@@ -645,8 +642,8 @@ public class ManaLearner extends javax.swing.JFrame {
         rdonu.setSelected(!ln.getGioitinh());
     }
 
-    private Learner getForm() {
-        Learner ln = new Learner();
+    private NguoiHoc getForm() {
+        NguoiHoc ln = new NguoiHoc();
         ln.setManh(txtmanh.getText());
         ln.setHoten(txthoten.getText());
         ln.setDienthoai(txtsdt.getText());

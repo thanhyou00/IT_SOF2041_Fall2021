@@ -1,6 +1,6 @@
 
 package DAO;
-import Entity.Staff;
+import Entity.NhanVien;
 import java.util.List;
 import JDBCHelper.JDBCHelper;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @author Nguyen Truc
  */
-public class NhanVienDAO extends EduSysDAO<Staff, String>{
+public class NhanVienDAO extends EduSysDAO<NhanVien, String>{
     String insert = "INSERT INTO NHANVIEN(MANV,MATKHAU,HOTEN,VAITRO) VALUES(?,?,?,?)";
     String update = "UPDATE NHANVIEN SET MATKHAU = ? , HOTEN = ? , VAITRO = ? WHERE MANV = ?";
     String delete = "DELETE FROM NHANVIEN WHERE MANV = ?";
@@ -17,12 +17,12 @@ public class NhanVienDAO extends EduSysDAO<Staff, String>{
     String selectbyId = "SELECT *FROM NHANVIEN WHERE MANV = ?";
     
     @Override
-    public void insert(Staff entity) {
+    public void insert(NhanVien entity) {
         JDBCHelper.update(insert, entity.getManv(),entity.getMatkhau(),entity.getHoten(),entity.getVaitro() );
     }
 
     @Override
-    public void update(Staff entity) {
+    public void update(NhanVien entity) {
         JDBCHelper.update(update,entity.getMatkhau(),entity.getHoten(),entity.getVaitro(),entity.getManv() );
     }
 
@@ -32,8 +32,8 @@ public class NhanVienDAO extends EduSysDAO<Staff, String>{
     }
 
     @Override
-    public Staff selectbyId(String id) {
-        List<Staff> list = this.selectbySql(selectbyId, id);
+    public NhanVien selectbyId(String id) {
+        List<NhanVien> list = this.selectbySql(selectbyId, id);
         if(list.isEmpty()){
             return null;
         } 
@@ -41,17 +41,17 @@ public class NhanVienDAO extends EduSysDAO<Staff, String>{
     }
 
     @Override
-    public List<Staff> selectAll() {
+    public List<NhanVien> selectAll() {
         return this.selectbySql(selectAll);
     }
 
     @Override
-    protected List<Staff> selectbySql(String sql, Object... args) {
-        List<Staff> list = new ArrayList<Staff>();
+    protected List<NhanVien> selectbySql(String sql, Object... args) {
+        List<NhanVien> list = new ArrayList<NhanVien>();
         try {
             ResultSet rs = JDBCHelper.query(sql, args);
             while(rs.next()) {
-                Staff nv = new Staff();
+                NhanVien nv = new NhanVien();
                 nv.setManv(rs.getString("MANV"));
                 nv.setHoten(rs.getString("HOTEN"));
                 nv.setMatkhau(rs.getString("MATKHAU"));
