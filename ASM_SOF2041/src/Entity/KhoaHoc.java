@@ -1,6 +1,8 @@
 
 package Entity;
 
+import java.util.Date;
+
 /**
  *
  * @author Nguyen Truc
@@ -10,15 +12,15 @@ public class KhoaHoc {
     private String macd;
     private float hocphi;
     private int thoiluong;
-    private String ngaykhaigiang;
+    private Date ngaykhaigiang;
     private String ghichu;
     private String manv;
-    private String ngaytao;
+    private Date ngaytao;
 
     public KhoaHoc() {
     }
 
-    public KhoaHoc(int makh, String macd, float hocphi, int thoiluong, String ngaykhaigiang, String ghichu, String manv, String ngaytao) {
+    public KhoaHoc(int makh, String macd, float hocphi, int thoiluong, Date ngaykhaigiang, String ghichu, String manv, Date ngaytao) {
         this.makh = makh;
         this.macd = macd;
         this.hocphi = hocphi;
@@ -63,11 +65,11 @@ public class KhoaHoc {
         this.thoiluong = thoiluong;
     }
 
-    public String getNgaykhaigiang() {
+    public Date getNgaykhaigiang() {
         return ngaykhaigiang;
     }
 
-    public void setNgaykhaigiang(String ngaykhaigiang) {
+    public void setNgaykhaigiang(Date ngaykhaigiang) {
         this.ngaykhaigiang = ngaykhaigiang;
     }
 
@@ -87,11 +89,11 @@ public class KhoaHoc {
         this.manv = manv;
     }
 
-    public String getNgaytao() {
+    public Date getNgaytao() {
         return ngaytao;
     }
 
-    public void setNgaytao(String ngaytao) {
+    public void setNgaytao(Date ngaytao) {
         this.ngaytao = ngaytao;
     }
 

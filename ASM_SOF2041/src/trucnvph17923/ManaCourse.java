@@ -7,6 +7,8 @@ import Entity.KhoaHoc;
 import Entity.ChuyenDe;
 import Utils.Auth;
 import Utils.MsgBox;
+import Utils.XDate;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -130,8 +132,6 @@ public class ManaCourse extends javax.swing.JFrame {
         txtchuyende.setEditable(false);
 
         jLabel3.setText("Ngày khai giảng");
-
-        txtngaykg.setText("0000-00-00");
 
         jLabel4.setText("Học phí");
 
@@ -521,6 +521,7 @@ public class ManaCourse extends javax.swing.JFrame {
 
     private KhoaHocDAO dao = new KhoaHocDAO();
     private ChuyenDeDAO cddao = new ChuyenDeDAO();
+    private NhanVienDAO nvdao = new NhanVienDAO();
     int row = 0;
 
     private void init() {
@@ -637,8 +638,8 @@ public class ManaCourse extends javax.swing.JFrame {
 
     private void setForm(KhoaHoc kh) {
         txtghichu.setText(kh.getGhichu());
-        txtngaytao.setText(kh.getNgaytao());
-        txtngaykg.setText(kh.getNgaykhaigiang());
+        txtngaytao.setText(XDate.toString(kh.getNgaytao(), "yyyy-MM-dd"));
+        txtngaykg.setText(XDate.toString(kh.getNgaykhaigiang(), "yyyy-MM-dd"));
         txthocphi.setText(kh.getHocphi() + "");
         txtthoiluong.setText(kh.getThoiluong() + "");
         txtnguoitao.setText(kh.getManv());
@@ -648,8 +649,8 @@ public class ManaCourse extends javax.swing.JFrame {
         KhoaHoc kh = new KhoaHoc();
         ChuyenDe chuyenDe = (ChuyenDe) cboChuyende.getSelectedItem();
         kh.setGhichu(txtghichu.getText());
-        kh.setNgaytao(txtngaytao.getText());
-        kh.setNgaykhaigiang(txtngaykg.getText());
+        kh.setNgaytao(XDate.toDate(txtngaytao.getText(), "yyyy-MM-dd"));
+        kh.setNgaykhaigiang(XDate.toDate(txtngaykg.getText(), "yyyy-MM-dd"));
         kh.setHocphi(Float.parseFloat(txthocphi.getText()));
         kh.setThoiluong(Integer.parseInt(txtthoiluong.getText()));
         kh.setManv(txtnguoitao.getText());
@@ -677,9 +678,14 @@ public class ManaCourse extends javax.swing.JFrame {
     }
 
     private void clear() {
-        KhoaHoc nv = new KhoaHoc();
-        this.setForm(nv);
-        txtngaykg.setText("0000-00-00");
+//        KhoaHoc nv = new KhoaHoc();
+//        this.setForm(nv);
+        txtngaykg.setText("");
+        txtghichu.setText("");
+        txthocphi.setText("0.0");
+        txtthoiluong.setText("0");
+        txtngaytao.setText("");
+        txtnguoitao.setText("");
         this.row = -1;
         this.updateStatus();
     }
@@ -724,10 +730,32 @@ public class ManaCourse extends javax.swing.JFrame {
             MsgBox.alert(this, "Thời lượng phải là số !");
             return false;
         }
+        try {
+            Date ngay = XDate.toDate(txtngaykg.getText(), "yyyy-MM-dd");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Sai định dạng năm-tháng-ngày !");
+            return false;
+        }
+        try {
+            Date ngay = XDate.toDate(txtngaytao.getText(), "yyyy-MM-dd");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Sai định dạng năm-tháng-ngày !");
+            return false;
+        }
         if (ngaykg.length() == 0||ngaytao.length()==0||nguoitao.length()==0||hocphi.length()==0||thoiluong.length()==0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return false;
-        } else {
+        } else if(nvdao.selectbyId(nguoitao)==null) {
+            MsgBox.alert(this, "Người tạo không tồn tại !");
+            return false;
+        } else if(Float.parseFloat(hocphi)<=0) {
+            MsgBox.alert(this, "Học phí phải lớn hơn 0 !");
+            return false;
+        } else if(Integer.parseInt(thoiluong)<=0) {
+            MsgBox.alert(this, "Thời lượng phải lớn hơn 0 !");
+            return false;
+        }
+        else {
             return true;
         }
     }

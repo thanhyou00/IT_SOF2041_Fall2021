@@ -61,10 +61,10 @@ public class KhoaHocDAO extends EduSysDAO<KhoaHoc, String> {
                 kh.setMacd(rs.getString("MACD"));
                 kh.setHocphi(rs.getFloat("HOCPHI"));
                 kh.setThoiluong(rs.getInt("THOILUONG"));
-                kh.setNgaykhaigiang(rs.getString("NGAYKG"));
+                kh.setNgaykhaigiang(rs.getDate("NGAYKG"));
                 kh.setGhichu(rs.getString("GHICHU"));
                 kh.setManv(rs.getString("MANV"));
-                kh.setNgaytao(rs.getString("NGAYTAO"));
+                kh.setNgaytao(rs.getDate("NGAYTAO"));
                 list.add(kh);
             }
             rs.getStatement().getConnection().close();

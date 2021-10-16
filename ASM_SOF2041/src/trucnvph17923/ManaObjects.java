@@ -1,6 +1,7 @@
 package trucnvph17923;
 
 import DAO.ChuyenDeDAO;
+import DAO.NhanVienDAO;
 import Entity.NguoiHoc;
 import Entity.ChuyenDe;
 import Utils.Auth;
@@ -631,32 +632,37 @@ public class ManaObjects extends javax.swing.JFrame {
     }
 
     private boolean checkAll() {
+        ChuyenDeDAO cddao = new ChuyenDeDAO();
         String macd = txtmacd.getText();
         String tencd = txttencd.getText();
-        int thoiluong;
-        float hocphi;
+        String hocphi = txthocphi.getText();
+        String thoiluong = txtthoiluong.getText();
         String mota = txtmota.getText();
         try {
-            thoiluong = Integer.parseInt(txtthoiluong.getText());
+            Float.parseFloat(hocphi);
         } catch (Exception e) {
-            MsgBox.alert(this, "Thời lượng phải là số và lớn hơn 0 !");
+            MsgBox.alert(this, "Học phí phải là số !");
             return false;
         }
         try {
-            hocphi = Float.parseFloat(txthocphi.getText());
+            Integer.parseInt(thoiluong);
         } catch (Exception e) {
-            MsgBox.alert(this, "Học phí phải là số và lớn hơn 0 !");
+            MsgBox.alert(this, "Thời lượng phải là số !");
             return false;
         }
         if (macd.length() == 0 || tencd.length() == 0 || (thoiluong+"").length() == 0 || (hocphi + "").length() == 0 || mota.length() == 0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return false;
+        } 
+        else if(cddao.selectbyId(macd)!=null) {
+            MsgBox.alert(this, "Mã chuyên đề đã tồn tại !");
+            return false;
         }
-        else if(thoiluong<=0) {
+        else if(Integer.parseInt(thoiluong)<=0) {
             MsgBox.alert(this, "Thời lượng phải lớn hơn 0 ");
             return false;
         }
-        else if(hocphi<=0) {
+        else if(Float.parseFloat(hocphi)<=0) {
             MsgBox.alert(this, "Học phí phải lớn hơn 0 ");
             return false;
         }        
