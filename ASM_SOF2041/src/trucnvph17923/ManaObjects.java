@@ -7,6 +7,7 @@ import Entity.ChuyenDe;
 import Utils.Auth;
 import Utils.MsgBox;
 import Utils.XImage;
+import java.awt.Image;
 import java.io.File;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -32,6 +33,8 @@ public class ManaObjects extends javax.swing.JFrame {
         this.fillTable();
         row = 0;
         this.updateStatus();
+        //lblhinh.setIcon(new ImageIcon("Images\\default_img.png"));
+        this.Img();
     }
 
     /**
@@ -83,8 +86,10 @@ public class ManaObjects extends javax.swing.JFrame {
         jLabel2.setText("Hình Logo");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblhinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblhinh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblhinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblhinhMouseClicked(evt);
@@ -629,9 +634,13 @@ public class ManaObjects extends javax.swing.JFrame {
             File file = fchooser.getSelectedFile();
             XImage.save(file);
             ImageIcon icon = XImage.read(file.getName());
-            lblhinh.setIcon(icon);
+            // Scale for img
+            Image img = icon.getImage();
+            Image imgScale = img.getScaledInstance(lblhinh.getWidth(), lblhinh.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaleIcon = new ImageIcon(imgScale);
+            lblhinh.setIcon(scaleIcon);
             lblhinh.setToolTipText(file.getName());
-        }
+        } 
     }
 
     private boolean checkAll() {
@@ -664,6 +673,12 @@ public class ManaObjects extends javax.swing.JFrame {
         } else {
             return true;
         }
+    }
+
+    private void Img() {
+            ImageIcon icon = XImage.read("default_img.png");
+            lblhinh.setIcon(icon);
+            lblhinh.setToolTipText("default_img.png");
     }
 
 }
