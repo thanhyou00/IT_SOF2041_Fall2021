@@ -401,7 +401,7 @@ public class ManaCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_cboChuyendeActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        if(checkAll()==false){
+        if (checkAll() == false) {
             return;
         } else {
             insert();
@@ -409,7 +409,7 @@ public class ManaCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        if(checkAll()==false){
+        if (checkAll() == false) {
             return;
         } else {
             update();
@@ -540,7 +540,7 @@ public class ManaCourse extends javax.swing.JFrame {
         } else {
             try {
                 dao.insert(nv);
-               // this.updateStatus();
+                // this.updateStatus();
                 this.fillTable();
                 this.clear();
                 MsgBox.alert(this, "Thêm mới thành công !");
@@ -570,17 +570,14 @@ public class ManaCourse extends javax.swing.JFrame {
         } else {
             KhoaHoc kh = new KhoaHoc();
             String makh = String.valueOf(tblkhoahoc.getValueAt(this.row, 0));
-            if (makh.length() == 0) {
-                MsgBox.alert(this, "Không được để trống dữ liệu !");
-                return;
-            } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa khóa học này ?")) {
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa khóa học này ?")) {
                 try {
                     dao.delete(makh);
                     this.fillTable();
                     this.clear();
                     MsgBox.alert(this, "Xóa thành công !");
                 } catch (Exception e) {
-                    
+
                     MsgBox.alert(this, "Xóa thất bại !");
                 }
             }
@@ -742,20 +739,19 @@ public class ManaCourse extends javax.swing.JFrame {
             MsgBox.alert(this, "Sai định dạng năm-tháng-ngày !");
             return false;
         }
-        if (ngaykg.length() == 0||ngaytao.length()==0||nguoitao.length()==0||hocphi.length()==0||thoiluong.length()==0) {
+        if (ngaykg.length() == 0 || ngaytao.length() == 0 || nguoitao.length() == 0 || hocphi.length() == 0 || thoiluong.length() == 0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return false;
-        } else if(nvdao.selectbyId(nguoitao)==null) {
+        } else if (nvdao.selectbyId(nguoitao) == null) {
             MsgBox.alert(this, "Người tạo không tồn tại !");
             return false;
-        } else if(Float.parseFloat(hocphi)<=0) {
+        } else if (Float.parseFloat(hocphi) <= 0) {
             MsgBox.alert(this, "Học phí phải lớn hơn 0 !");
             return false;
-        } else if(Integer.parseInt(thoiluong)<=0) {
+        } else if (Integer.parseInt(thoiluong) <= 0) {
             MsgBox.alert(this, "Thời lượng phải lớn hơn 0 !");
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

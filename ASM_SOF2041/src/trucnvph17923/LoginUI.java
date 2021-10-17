@@ -1,4 +1,3 @@
-
 package trucnvph17923;
 
 import DAO.NhanVienDAO;
@@ -15,7 +14,10 @@ import Utils.MsgBox;
  * @author Nguyen Truc
  */
 public class LoginUI extends javax.swing.JFrame {
-    private  NhanVienDAO dao = new NhanVienDAO();
+
+    private NhanVienDAO dao = new NhanVienDAO();
+    static int count = 1;
+
     public LoginUI() {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -39,6 +41,8 @@ public class LoginUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblshowpass = new javax.swing.JLabel();
         txtmanv = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtpass = new javax.swing.JPasswordField();
@@ -83,18 +87,47 @@ public class LoginUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("TÊN ĐĂNG NHẬP");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblshowpass.setBackground(new java.awt.Color(255, 255, 255));
+        lblshowpass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblshowpass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/show.png"))); // NOI18N
+        lblshowpass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblshowpass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblshowpassMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addComponent(lblshowpass, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblshowpass))
+        );
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 229, 60, -1));
 
         txtmanv.setText("NV001");
-        jPanel2.add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 293, 30));
+        jPanel2.add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 290, 37));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("MẬT KHẨU");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
 
         txtpass.setText("mk00001");
         txtpass.setEchoChar('\u2022');
-        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 212, 293, 30));
+        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 293, 37));
 
         btnlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Key.png"))); // NOI18N
         btnlogin.setText("ĐĂNG NHẬP");
@@ -103,7 +136,7 @@ public class LoginUI extends javax.swing.JFrame {
                 btnloginActionPerformed(evt);
             }
         });
-        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 333, -1, 40));
 
         btnthoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Log out.png"))); // NOI18N
         btnthoat.setText("THOÁT");
@@ -112,7 +145,7 @@ public class LoginUI extends javax.swing.JFrame {
                 btnthoatActionPerformed(evt);
             }
         });
-        jPanel2.add(btnthoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 129, -1));
+        jPanel2.add(btnthoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 333, 129, 40));
 
         jPanel4.setBackground(new java.awt.Color(0, 204, 204));
         jPanel4.setAlignmentX(0.0F);
@@ -144,6 +177,17 @@ public class LoginUI extends javax.swing.JFrame {
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         dangNhap();
     }//GEN-LAST:event_btnloginActionPerformed
+
+    private void lblshowpassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblshowpassMouseClicked
+        count++;
+        if (count % 2 == 0) {
+            txtpass.setEchoChar('\u0000');
+            lblshowpass.setIcon(new ImageIcon("src\\Icons\\hidden.png"));
+        } else {
+            txtpass.setEchoChar('\u2022');
+            lblshowpass.setIcon(new ImageIcon("src\\Icons\\show.png"));
+        }
+    }//GEN-LAST:event_lblshowpassMouseClicked
 
     /**
      * @param args the command line arguments
@@ -186,10 +230,12 @@ public class LoginUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lbllogo;
+    private javax.swing.JLabel lblshowpass;
     private javax.swing.JPanel pnlogo;
     private javax.swing.JTextField txtmanv;
     private javax.swing.JPasswordField txtpass;
@@ -199,14 +245,13 @@ public class LoginUI extends javax.swing.JFrame {
         String manv = txtmanv.getText();
         String matkhau = new String(txtpass.getPassword());
         NhanVien nv = dao.selectbyId(manv);
-        if(nv==null){
-           MsgBox.alert(this, "Sai tên đăng nhập !");
+        if (nv == null) {
+            MsgBox.alert(this, "Sai tên đăng nhập !");
             return;
-        }else if((!matkhau.equals(nv.getMatkhau()))){
-           MsgBox.alert(this, "Sai mật khẩu !");
-            return;            
-        }
-        else {
+        } else if ((!matkhau.equals(nv.getMatkhau()))) {
+            MsgBox.alert(this, "Sai mật khẩu !");
+            return;
+        } else {
             Auth.user = nv;
             new MainUI().setVisible(true);
             this.dispose();
@@ -214,7 +259,7 @@ public class LoginUI extends javax.swing.JFrame {
     }
 
     private void ketThuc() {
-        if(MsgBox.confirm(this,"Bạn có chắc muốn thoát ?")){
+        if (MsgBox.confirm(this, "Bạn có chắc muốn thoát ?")) {
             System.exit(0);
         }
     }

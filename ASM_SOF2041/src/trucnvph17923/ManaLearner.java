@@ -1,4 +1,3 @@
-
 package trucnvph17923;
 
 import DAO.NguoiHocDAO;
@@ -17,8 +16,10 @@ import javax.swing.table.DefaultTableModel;
  * @author Nguyen Truc
  */
 public class ManaLearner extends javax.swing.JFrame {
-    private  NguoiHocDAO dao = new NguoiHocDAO();
-    private  int row =0 ;
+
+    private NguoiHocDAO dao = new NguoiHocDAO();
+    private int row = 0;
+
     public ManaLearner() {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -29,6 +30,7 @@ public class ManaLearner extends javax.swing.JFrame {
         row = 0;
         this.updateStatus();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -174,8 +176,6 @@ public class ManaLearner extends javax.swing.JFrame {
         txtghichu.setColumns(20);
         txtghichu.setRows(5);
         jScrollPane2.setViewportView(txtghichu);
-
-        txtngaysinh.setText("0000-00-00");
 
         jLabel9.setText("Ngày sinh");
 
@@ -393,23 +393,23 @@ public class ManaLearner extends javax.swing.JFrame {
     }//GEN-LAST:event_rdonamActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        NguoiHoc ln =getForm();
-        if(checkAll()==false) {
+        NguoiHocDAO nhdao = new NguoiHocDAO();
+        if (checkAll() == false) {
             return;
-        } else if(txtmanh.getText().equals(ln.getManh())){
+        } else if (nhdao.selectbyId(txtmanh.getText()) != null) {
+            MsgBox.alert(this, "Mã người học đã tồn tại !");
             return;
-        } 
-        else {
+        } else {
             insert();
         }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        if(checkAll()==false) {
+        if (checkAll() == false) {
             return;
         } else {
             update();
-        }        
+        }
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -441,7 +441,7 @@ public class ManaLearner extends javax.swing.JFrame {
     }//GEN-LAST:event_btntimkiemActionPerformed
 
     private void tblnguoihocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblnguoihocMouseClicked
-        if(evt.getClickCount()==2){
+        if (evt.getClickCount() == 2) {
             this.row = tblnguoihoc.getSelectedRow();
             this.edit();
         }
@@ -523,11 +523,10 @@ public class ManaLearner extends javax.swing.JFrame {
     private javax.swing.JTextField txttimkiem;
     // End of variables declaration//GEN-END:variables
 
-    
     private void insert() {
         NguoiHoc ln = getForm();
         String manv = txtmanh.getText();
-        if(manv.length()==0) {
+        if (manv.length() == 0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return;
         } else {
@@ -538,6 +537,7 @@ public class ManaLearner extends javax.swing.JFrame {
                 MsgBox.alert(this, "Thêm mới thành công !");
                 return;
             } catch (Exception e) {
+                e.printStackTrace();
                 MsgBox.alert(this, "Thêm mới thất bại !");
                 return;
             }
@@ -547,7 +547,7 @@ public class ManaLearner extends javax.swing.JFrame {
     private void update() {
         NguoiHoc ln = getForm();
         String manh = txtmanh.getText();
-        if(manh.length()==0) {
+        if (manh.length() == 0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return;
         } else {
@@ -562,19 +562,18 @@ public class ManaLearner extends javax.swing.JFrame {
     }
 
     private void delete() {
-        if(!Auth.isManager()){
-            MsgBox.alert(this, "Bạn không có quyền xóa nhân viên !");
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền xóa người học !");
         } else {
-            String manv = txtmanh.getText();
-            if(manv.equals(Auth.user.getManv())) {
-                MsgBox.alert(this, "Bạn không được xóa chính bạn !");
-            } else if(MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này ?")){
+            String manh = txtmanh.getText();
+            if (MsgBox.confirm(this, "Bạn thực sự muốn xóa người học này ?")) {
                 try {
-                    dao.delete(manv);
+                    dao.delete(manh);
                     this.fillTable();
                     this.clear();
                     MsgBox.alert(this, "Xóa thành công !");
                 } catch (Exception e) {
+                    e.printStackTrace();
                     MsgBox.alert(this, "Xóa thất bại !");
                 }
             }
@@ -590,26 +589,26 @@ public class ManaLearner extends javax.swing.JFrame {
     }
 
     private void first() {
-        this.row=0;
+        this.row = 0;
         this.edit();
     }
 
     private void prev() {
-        if(this.row>0) {
+        if (this.row > 0) {
             this.row--;
             this.edit();
         }
     }
 
     private void next() {
-        if(this.row<tblnguoihoc.getRowCount()-1){
+        if (this.row < tblnguoihoc.getRowCount() - 1) {
             this.row++;
             this.edit();
         }
     }
 
     private void last() {
-        this.row= tblnguoihoc.getRowCount()-1;
+        this.row = tblnguoihoc.getRowCount() - 1;
         this.edit();
     }
 
@@ -617,13 +616,12 @@ public class ManaLearner extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblnguoihoc.getModel();
         model.setRowCount(0);
         try {
-           String keyword = txttimkiem.getText();
-           List<NguoiHoc> list = dao.selectbyKeyword(keyword);
+            String keyword = txttimkiem.getText();
+            List<NguoiHoc> list = dao.selectbyKeyword(keyword);
             for (NguoiHoc ln : list) {
                 Object[] rows = {
-        ln.getManh(),ln.getHoten(),ln.getGioitinh()?"Nam":"Nữ",ln.getNgaysinh(),ln.getEmail(),ln.getDienthoai(),ln.getGhichu(),
-        ln.getManv(),ln.getNgaydangky(),
-                };
+                    ln.getManh(), ln.getHoten(), ln.getGioitinh() ? "Nam" : "Nữ", ln.getNgaysinh(), ln.getEmail(), ln.getDienthoai(), ln.getGhichu(),
+                    ln.getManv(), ln.getNgaydangky(),};
                 model.addRow(rows);
             }
         } catch (Exception e) {
@@ -655,24 +653,24 @@ public class ManaLearner extends javax.swing.JFrame {
     }
 
     private void updateStatus() {
-        boolean edit = this.row>=0;
-        boolean first = this.row==0;
-        boolean last = this.row==tblnguoihoc.getRowCount()-1;
+        boolean edit = this.row >= 0;
+        boolean first = this.row == 0;
+        boolean last = this.row == tblnguoihoc.getRowCount() - 1;
         // Trạng thái form
         txtmanh.setEditable(!edit);
         btnthem.setEnabled(!edit);
         btnsua.setEnabled(edit);
         btnxoa.setEnabled(edit);
         // Trạng thái điều hướng
-        btnfirst.setEnabled(edit&&!first);
-        btnpre.setEnabled(edit&&!first);
-        btnnext.setEnabled(edit&&!last);
-        btnlast.setEnabled(edit&&!last);
+        btnfirst.setEnabled(edit && !first);
+        btnpre.setEnabled(edit && !first);
+        btnnext.setEnabled(edit && !last);
+        btnlast.setEnabled(edit && !last);
     }
-    
-    private void clear(){
-      //  Learner ln = new Learner();
-     //   this.setForm(ln);
+
+    private void clear() {
+        //  Learner ln = new Learner();
+        //   this.setForm(ln);
         txtemail.setText("");
         txtghichu.setText("");
         txthoten.setText("");
@@ -680,18 +678,18 @@ public class ManaLearner extends javax.swing.JFrame {
         txtmanh.setText("");
         txtsdt.setText("");
         rdonam.setSelected(true);
-        this.row=-1;
+        this.row = -1;
         this.updateStatus();
     }
-    
+
     private void search() {
         this.fillTable();
         this.clear();
-        this.row=-1;
+        this.row = -1;
         this.updateStatus();
     }
-    
-    private boolean checkAll(){
+
+    private boolean checkAll() {
         String manh = txtmanh.getText();
         String hoten = txthoten.getText();
         String ngaysinh = txtngaysinh.getText();
@@ -699,14 +697,14 @@ public class ManaLearner extends javax.swing.JFrame {
         String sdt = txtsdt.getText();
         String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"; // check regex email
         boolean matchFound = Pattern.matches(regex, txtemail.getText());
-        if(manh.length()==0||hoten.length()==0||ngaysinh.length()==0||email.length()==0||sdt.length()==0) {
+        if (manh.length() == 0 || hoten.length() == 0 || ngaysinh.length() == 0 || email.length() == 0 || sdt.length() == 0) {
             MsgBox.alert(this, "Dữ liệu không được để trống !");
             return false;
-        } else if(!matchFound) {
+        } else if (!matchFound) {
             MsgBox.alert(this, "Nhập sai định dạng email !");
             return false;
         } else {
-            return true;   
+            return true;
         }
     }
 }

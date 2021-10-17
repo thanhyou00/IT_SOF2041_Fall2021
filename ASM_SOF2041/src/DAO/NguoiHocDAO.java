@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class NguoiHocDAO extends EduSysDAO<NguoiHoc, String>{
 
-    String insert = "INSERT INTO NGUOIHOC(MANH,HOTEN,GIOITINH,NGAYSINH,EMAIL,DIENTHOAI,GHICHU,MANV,NGAYDK) VALUES(?,?,?,?,?,?,?,?,?)";
+    String insert = "INSERT INTO NGUOIHOC(MANH,HOTEN,GIOITINH,NGAYSINH,EMAIL,DIENTHOAI,GHICHU,MANV) VALUES(?,?,?,?,?,?,?,?)";
     String update = "UPDATE NGUOIHOC SET HOTEN = ?,GIOITINH=?,NGAYSINH=?,EMAIL=?,DIENTHOAI=?,GHICHU=? WHERE MANH = ? ";
     String delete = "DELETE FROM NGUOIHOC WHERE MANH = ? ";
     String selectAll = "SELECT *FROM NGUOIHOC";
@@ -23,7 +23,7 @@ public class NguoiHocDAO extends EduSysDAO<NguoiHoc, String>{
     @Override
     public void insert(NguoiHoc entity) {
        JDBCHelper.update(insert,entity.getManh(),entity.getHoten(),entity.getGioitinh(),entity.getNgaysinh(),entity.getEmail(),entity.getDienthoai(),
-               entity.getGhichu(),entity.getManv(),entity.getNgaydangky());
+               entity.getGhichu(),"NV001");
     }
 
     @Override
@@ -64,8 +64,8 @@ public class NguoiHocDAO extends EduSysDAO<NguoiHoc, String>{
                 ln.setHoten(rs.getString("HOTEN"));
                 ln.setManh(rs.getString("MANH"));
                 ln.setManv(rs.getString("MANV"));
-                ln.setNgaydangky(rs.getString("NGAYDK"));
-                ln.setNgaysinh(rs.getString("NGAYSINH"));
+                ln.setNgaydangky(rs.getDate("NGAYDK").toString());
+                ln.setNgaysinh(rs.getDate("NGAYSINH").toString());
                 list.add(ln);
             }
             rs.getStatement().getConnection().close();

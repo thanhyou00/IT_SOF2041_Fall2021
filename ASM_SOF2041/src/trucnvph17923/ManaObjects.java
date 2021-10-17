@@ -373,19 +373,26 @@ public class ManaObjects extends javax.swing.JFrame {
     }//GEN-LAST:event_tblchuyendeMouseClicked
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-       if(checkAll()==false){
-           return;
-       } else {
+        ChuyenDeDAO cddao = new ChuyenDeDAO();
+        String macd = txtmacd.getText();
+        if (checkAll() == false) {
+            return;
+        } 
+        else if (cddao.selectbyId(macd)!= null) {
+            MsgBox.alert(this, "Mã chuyên đề đã tồn tại !");
+            return;
+        }
+        else {
             insert();
-       }
+        }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-       if(checkAll()==false){
-           return;
-       } else {
+        if (checkAll() == false) {
+            return;
+        } else {
             update();
-       }
+        }
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -477,11 +484,6 @@ public class ManaObjects extends javax.swing.JFrame {
 
     private void insert() {
         ChuyenDe cd = getForm();
-        String macd = txtmacd.getText();
-        if (macd.equals(cd.getMacd())) {
-            MsgBox.alert(this, "Mã chuyên đề đã tồn tại !");
-            return;
-        } else {
             try {
                 dao.insert(cd);
                 this.fillTable();
@@ -489,22 +491,22 @@ public class ManaObjects extends javax.swing.JFrame {
                 MsgBox.alert(this, "Thêm mới thành công !");
                 return;
             } catch (Exception e) {
+                e.printStackTrace();
                 MsgBox.alert(this, "Thêm mới thất bại !");
                 return;
-            }
         }
     }
 
     private void update() {
         ChuyenDe cd = getForm();
-            try {
-                dao.update(cd);
-                this.fillTable();
-                MsgBox.alert(this, "Cập nhật thành công !");
-                return;
-            } catch (Exception e) {
-                MsgBox.alert(this, "Cập nhật thất bại !");
-            }
+        try {
+            dao.update(cd);
+            this.fillTable();
+            MsgBox.alert(this, "Cập nhật thành công !");
+            return;
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại !");
+        }
     }
 
     private void delete() {
@@ -520,6 +522,7 @@ public class ManaObjects extends javax.swing.JFrame {
                     MsgBox.alert(this, "Xóa thành công !");
                     return;
                 } catch (Exception e) {
+                    e.printStackTrace();
                     MsgBox.alert(this, "Xóa thất bại !");
                 }
             }
@@ -632,7 +635,6 @@ public class ManaObjects extends javax.swing.JFrame {
     }
 
     private boolean checkAll() {
-        ChuyenDeDAO cddao = new ChuyenDeDAO();
         String macd = txtmacd.getText();
         String tencd = txttencd.getText();
         String hocphi = txthocphi.getText();
@@ -650,23 +652,16 @@ public class ManaObjects extends javax.swing.JFrame {
             MsgBox.alert(this, "Thời lượng phải là số !");
             return false;
         }
-        if (macd.length() == 0 || tencd.length() == 0 || (thoiluong+"").length() == 0 || (hocphi + "").length() == 0 || mota.length() == 0) {
+        if (macd.length() == 0 || tencd.length() == 0 || (thoiluong + "").length() == 0 || (hocphi + "").length() == 0 || mota.length() == 0) {
             MsgBox.alert(this, "Không được để trống dữ liệu !");
             return false;
-        } 
-        else if(cddao.selectbyId(macd)!=null) {
-            MsgBox.alert(this, "Mã chuyên đề đã tồn tại !");
-            return false;
-        }
-        else if(Integer.parseInt(thoiluong)<=0) {
+        } else if (Integer.parseInt(thoiluong) <= 0) {
             MsgBox.alert(this, "Thời lượng phải lớn hơn 0 ");
             return false;
-        }
-        else if(Float.parseFloat(hocphi)<=0) {
+        } else if (Float.parseFloat(hocphi) <= 0) {
             MsgBox.alert(this, "Học phí phải lớn hơn 0 ");
             return false;
-        }        
-        else {
+        } else {
             return true;
         }
     }
