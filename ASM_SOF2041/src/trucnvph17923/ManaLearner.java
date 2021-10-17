@@ -695,12 +695,26 @@ public class ManaLearner extends javax.swing.JFrame {
         String ngaysinh = txtngaysinh.getText();
         String email = txtemail.getText();
         String sdt = txtsdt.getText();
+        Date d = new Date();
+        Date date;
+        int year = d.getYear();
         String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"; // check regex email
         boolean matchFound = Pattern.matches(regex, txtemail.getText());
+        try {
+            date = XDate.toDate(txtngaysinh.getText(), "yyyy-MM-dd");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Sai định dạng năm-tháng-ngày !");
+            return false;
+        }
+        int tuoi = year-date.getYear(); // 1900
         if (manh.length() == 0 || hoten.length() == 0 || ngaysinh.length() == 0 || email.length() == 0 || sdt.length() == 0) {
             MsgBox.alert(this, "Dữ liệu không được để trống !");
             return false;
-        } else if (!matchFound) {
+        }  else if(tuoi<16) {
+            MsgBox.alert(this, "Tuổi người học phải từ 16 trở lên !");
+            return false;
+        }
+        else if (!matchFound) {
             MsgBox.alert(this, "Nhập sai định dạng email !");
             return false;
         } else {

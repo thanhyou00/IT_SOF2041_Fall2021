@@ -4,6 +4,7 @@ package DAO;
 import Entity.NguoiHoc;
 import java.util.List;
 import JDBCHelper.JDBCHelper;
+import Utils.Auth;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class NguoiHocDAO extends EduSysDAO<NguoiHoc, String>{
     @Override
     public void insert(NguoiHoc entity) {
        JDBCHelper.update(insert,entity.getManh(),entity.getHoten(),entity.getGioitinh(),entity.getNgaysinh(),entity.getEmail(),entity.getDienthoai(),
-               entity.getGhichu(),"NV001");
+               entity.getGhichu(),Auth.user.getManv());
     }
 
     @Override

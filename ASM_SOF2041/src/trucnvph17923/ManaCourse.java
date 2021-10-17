@@ -8,6 +8,7 @@ import Entity.ChuyenDe;
 import Utils.Auth;
 import Utils.MsgBox;
 import Utils.XDate;
+import java.time.Month;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -715,6 +716,7 @@ public class ManaCourse extends javax.swing.JFrame {
         String nguoitao = txtnguoitao.getText();
         String hocphi = txthocphi.getText();
         String thoiluong = txtthoiluong.getText();
+        Date d1, d2;
         try {
             Float.parseFloat(hocphi);
         } catch (Exception e) {
@@ -728,13 +730,13 @@ public class ManaCourse extends javax.swing.JFrame {
             return false;
         }
         try {
-            Date ngay = XDate.toDate(txtngaykg.getText(), "yyyy-MM-dd");
+            d1 = XDate.toDate(txtngaykg.getText(), "yyyy-MM-dd");
         } catch (Exception e) {
             MsgBox.alert(this, "Sai định dạng năm-tháng-ngày !");
             return false;
         }
         try {
-            Date ngay = XDate.toDate(txtngaytao.getText(), "yyyy-MM-dd");
+            d2 = XDate.toDate(txtngaytao.getText(), "yyyy-MM-dd");
         } catch (Exception e) {
             MsgBox.alert(this, "Sai định dạng năm-tháng-ngày !");
             return false;
@@ -744,6 +746,15 @@ public class ManaCourse extends javax.swing.JFrame {
             return false;
         } else if (nvdao.selectbyId(nguoitao) == null) {
             MsgBox.alert(this, "Người tạo không tồn tại !");
+            return false;
+        } else if (d1.getYear() < d2.getYear()) {
+            MsgBox.alert(this, "Ngày tạo không thể sau ngày khai giảng !");
+            return false;
+        } else if (d1.getYear() == d2.getYear() && d1.getMonth() < d2.getMonth()) {
+            MsgBox.alert(this, "Ngày tạo không thể sau ngày khai giảng !");
+            return false;
+        } else if (d1.getYear() == d2.getYear() && d1.getMonth() == d2.getMonth() && d1.getDay() < d2.getDay()) {
+            MsgBox.alert(this, "Ngày tạo không thể sau ngày khai giảng !");
             return false;
         } else if (Float.parseFloat(hocphi) <= 0) {
             MsgBox.alert(this, "Học phí phải lớn hơn 0 !");
