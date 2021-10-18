@@ -91,6 +91,8 @@ public class MainUI extends javax.swing.JFrame {
         mnihuongdan = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         mnigioithieu = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mniphanhoi = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LẬP TRÌNH CITY EDUCATION");
@@ -388,6 +390,16 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
         mnutrogiup.add(mnigioithieu);
+        mnutrogiup.add(jSeparator1);
+
+        mniphanhoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/send_email.png"))); // NOI18N
+        mniphanhoi.setText("Phản hồi");
+        mniphanhoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniphanhoiActionPerformed(evt);
+            }
+        });
+        mnutrogiup.add(mniphanhoi);
 
         jMenuBar1.add(mnutrogiup);
 
@@ -500,6 +512,10 @@ public class MainUI extends javax.swing.JFrame {
         openThongke(WIDTH);
     }//GEN-LAST:event_mnidoanhthuActionPerformed
 
+    private void mniphanhoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniphanhoiActionPerformed
+        openPhanhoi();
+    }//GEN-LAST:event_mniphanhoiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -548,6 +564,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
@@ -572,6 +589,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniluongnguoihoc;
     private javax.swing.JMenuItem mninguoihoc;
     private javax.swing.JMenuItem mninhanvien;
+    private javax.swing.JMenuItem mniphanhoi;
     private javax.swing.JMenu mnuhethong;
     private javax.swing.JMenu mnuquanly;
     private javax.swing.JMenu mnuthongke;
@@ -666,6 +684,14 @@ public class MainUI extends javax.swing.JFrame {
                 tk.setVisible(true);
                 tk.selectTab(index);
             }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập !");
+        }
+    }
+
+    private void openPhanhoi() {
+        if (Auth.isLogin()) {
+            new Feedback().setVisible(true);
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập !");
         }

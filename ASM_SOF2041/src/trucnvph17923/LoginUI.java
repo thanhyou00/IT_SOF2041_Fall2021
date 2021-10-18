@@ -87,7 +87,7 @@ public class LoginUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("TÊN ĐĂNG NHẬP");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -119,15 +119,15 @@ public class LoginUI extends javax.swing.JFrame {
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 229, 60, -1));
 
         txtmanv.setText("NV001");
-        jPanel2.add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 290, 37));
+        jPanel2.add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 320, 37));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("MẬT KHẨU");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         txtpass.setText("mk00001");
         txtpass.setEchoChar('\u2022');
-        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 293, 37));
+        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 320, 37));
 
         btnlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Key.png"))); // NOI18N
         btnlogin.setText("ĐĂNG NHẬP");
@@ -136,7 +136,7 @@ public class LoginUI extends javax.swing.JFrame {
                 btnloginActionPerformed(evt);
             }
         });
-        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 333, -1, 40));
+        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, 40));
 
         btnthoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Log out.png"))); // NOI18N
         btnthoat.setText("THOÁT");

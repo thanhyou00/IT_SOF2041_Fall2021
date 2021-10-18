@@ -573,8 +573,7 @@ public class ManaLearner extends javax.swing.JFrame {
                     this.clear();
                     MsgBox.alert(this, "Xóa thành công !");
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    MsgBox.alert(this, "Xóa thất bại !");
+                    MsgBox.alert(this, "Người học đã tham gia khóa học !");
                 }
             }
         }
