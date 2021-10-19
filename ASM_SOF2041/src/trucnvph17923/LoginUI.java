@@ -247,7 +247,11 @@ public class LoginUI extends javax.swing.JFrame {
         String manv = txtmanv.getText();
         String matkhau = new String(txtpass.getPassword());
         NhanVien nv = dao.selectbyId(manv);
-        if (nv == null) {
+        if(manv.length()==0||matkhau.length()==0) {
+            MsgBox.alert(this, "Không được để trống !");
+            return;
+        }
+        else if (nv == null) {
             MsgBox.alert(this, "Sai tên đăng nhập !");
             return;
         } else if ((!matkhau.equals(nv.getMatkhau()))) {
