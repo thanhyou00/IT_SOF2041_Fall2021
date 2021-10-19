@@ -8,6 +8,7 @@ import Entity.ChuyenDe;
 import Utils.Auth;
 import Utils.MsgBox;
 import Utils.XDate;
+import Utils.XImage;
 import java.time.Month;
 import java.util.Date;
 import java.util.List;
@@ -29,8 +30,9 @@ public class ManaCourse extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
         init();
     }
 

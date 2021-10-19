@@ -5,6 +5,7 @@ import Entity.NguoiHoc;
 import Utils.Auth;
 import Utils.MsgBox;
 import Utils.XDate;
+import Utils.XImage;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -24,8 +25,9 @@ public class ManaLearner extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
         this.fillTable();
         row = 0;
         this.updateStatus();

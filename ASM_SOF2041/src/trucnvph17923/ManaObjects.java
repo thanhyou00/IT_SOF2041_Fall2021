@@ -28,8 +28,9 @@ public class ManaObjects extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
         this.fillTable();
         row = 0;
         this.updateStatus();

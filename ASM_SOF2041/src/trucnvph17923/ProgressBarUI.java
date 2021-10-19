@@ -1,6 +1,7 @@
 
 package trucnvph17923;
 
+import Utils.XImage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -21,8 +22,9 @@ public class ProgressBarUI extends javax.swing.JFrame {
     public ProgressBarUI() {
         initComponents();
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
         // Tao doi tuong timer
         t  = new Timer(10,new ActionListener() {
             @Override

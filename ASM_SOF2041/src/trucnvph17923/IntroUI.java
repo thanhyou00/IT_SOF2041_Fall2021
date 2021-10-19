@@ -1,6 +1,7 @@
 
 package trucnvph17923;
 
+import Utils.XImage;
 import javax.swing.ImageIcon;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -17,8 +18,9 @@ public class IntroUI extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
     }
 
     /**

@@ -1,11 +1,13 @@
 package trucnvph17923;
 
 import Utils.MsgBox;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+import Utils.XImage;
+//import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import javax.mail.PasswordAuthentication;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -29,9 +31,9 @@ public class Feedback extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
-       // init();
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
     }
 
     /**
@@ -193,39 +195,10 @@ public class Feedback extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-
-        final String username = txtUser.getText();
-        final String password = new String(txtPassword.getPassword());
-
-        Properties prop = new Properties();
-		prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true"); //TLS
-        
-        Session session = Session.getInstance(prop,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username));
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse("truc06082000@gmail.com")
-            );
-            message.setSubject(txtSubject.getText());
-            message.setText(txtMessages.getText());
-
-            Transport.send(message);
-            JOptionPane.showMessageDialog(null, "Gửi email thành công !", "Message",
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE
-            );
-        } catch (Exception e) {
-            e.printStackTrace();
-            MsgBox.alert(this, "Gửi email không thành công !");
+        if (checkAll() == false) {
+            return;
+        } else {
+            btnFb();
         }
 
     }//GEN-LAST:event_btnSendActionPerformed
@@ -281,25 +254,59 @@ public class Feedback extends javax.swing.JFrame {
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
-//    private void init() {
-//        // Cac thong so gmail
-//         Properties config = new Properties();
-//         config.setProperty("mail.smtp.hosy", "smtp.gmail.com");
-//         config.setProperty("mail.smtp.port", "465");
-//         config.setProperty("mail.smtp.starttls.enable", "true");
-//         config.setProperty("mail.smtp.auth", "true");
-//         config.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-//         config.setProperty("mail.smtp.socketFactory.fallback", "false");
-//         
-//         // Dang nhap gmail
-//         Authenticator authenticator = new Authenticator() {
-//             @Override
-//             protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-//                 String email = "thanhyou00@gmail.com";
-//                 String password = "";
-//                 return new javax.mail.PasswordAuthentication(email, password);
-//             }
-//         
-//};
-//    }
+    private void btnFb() {
+
+        final String username = txtUser.getText();
+        final String password = new String(txtPassword.getPassword());
+
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse("truc06082000@gmail.com")
+            );
+            message.setSubject(txtSubject.getText());
+            message.setText(txtMessages.getText());
+
+            Transport.send(message);
+            JOptionPane.showMessageDialog(null, "Gửi email thành công !", "Message",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Gửi email không thành công !");
+        }
+    }
+
+    private boolean checkAll() {
+        String tk = txtUser.getText();
+        String mk = new String(txtPassword.getPassword());
+        String cd = txtSubject.getText();
+        String nd = txtMessages.getText();
+        String regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"; // check regex email
+        boolean matchFound = Pattern.matches(regex, tk);
+        if (tk.length() == 0 || mk.length() == 0 || cd.length() == 0 || nd.length() == 0) {
+            MsgBox.alert(this, "Không được để trống !");
+            return false;
+        } else if(!matchFound) {
+            MsgBox.alert(this, "Nhập sai định dạng email !");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }

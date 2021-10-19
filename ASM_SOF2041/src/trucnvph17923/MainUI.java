@@ -2,6 +2,7 @@ package trucnvph17923;
 
 import Utils.Auth;
 import Utils.MsgBox;
+import Utils.XImage;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +23,9 @@ public class MainUI extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
         // Setting clock
         new Thread() { //Start - Create a clock
             public void run() {

@@ -4,6 +4,7 @@ import DAO.KhoaHocDAO;
 import DAO.ThongKeDAO;
 import Entity.KhoaHoc;
 import Utils.Auth;
+import Utils.XImage;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -23,8 +24,9 @@ public class Statistics extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
         init();
     }
 

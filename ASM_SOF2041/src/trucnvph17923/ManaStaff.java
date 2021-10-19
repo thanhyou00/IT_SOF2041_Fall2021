@@ -6,6 +6,7 @@ import Entity.NhanVien;
 import Utils.Auth;
 import static Utils.Auth.clear;
 import Utils.MsgBox;
+import Utils.XImage;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -20,8 +21,9 @@ public class ManaStaff extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
         init();
     }
 

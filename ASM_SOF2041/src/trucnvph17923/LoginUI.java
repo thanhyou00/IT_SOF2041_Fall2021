@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import Entity.NhanVien;
 import Utils.Auth;
 import Utils.MsgBox;
+import Utils.XImage;
 
 /**
  *
@@ -22,8 +23,9 @@ public class LoginUI extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());
     }
 
     /**
@@ -182,10 +184,10 @@ public class LoginUI extends javax.swing.JFrame {
         count++;
         if (count % 2 == 0) {
             txtpass.setEchoChar('\u0000');
-            lblshowpass.setIcon(new ImageIcon("src\\Icons\\hidden.png"));
+           // lblshowpass.setIcon(new ImageIcon("src\\Icons\\hidden.png"));
         } else {
             txtpass.setEchoChar('\u2022');
-            lblshowpass.setIcon(new ImageIcon("src\\Icons\\show.png"));
+            //lblshowpass.setIcon(new ImageIcon("src\\Icons\\show.png"));
         }
     }//GEN-LAST:event_lblshowpassMouseClicked
 

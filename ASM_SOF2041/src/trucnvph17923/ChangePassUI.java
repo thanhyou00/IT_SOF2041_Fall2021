@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import Utils.Auth;
 import Utils.MsgBox;
 import Entity.NhanVien;
+import Utils.XImage;
 import javax.swing.JOptionPane;
 /**
  *
@@ -17,9 +18,9 @@ public class ChangePassUI extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // Change default icon 
-        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
-        this.setIconImage(icon.getImage());
-   
+//        ImageIcon icon = new ImageIcon("src\\Icons\\fpt.png");
+//        this.setIconImage(icon.getImage());
+        this.setIconImage(XImage.getAppIcon());   
     }
 
     /**
