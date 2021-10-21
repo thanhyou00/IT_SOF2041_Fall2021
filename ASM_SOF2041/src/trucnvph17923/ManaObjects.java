@@ -525,6 +525,7 @@ public class ManaObjects extends javax.swing.JFrame {
                     dao.delete(manv);
                     this.fillTable();
                     this.clear();
+                    this.Img();
                     MsgBox.alert(this, "Xóa thành công !");
                     return;
                 } catch (Exception e) {
@@ -590,8 +591,12 @@ public class ManaObjects extends javax.swing.JFrame {
         txtthoiluong.setText(cd.getThoiluong() + "");
         txtmota.setText(cd.getMota());
         if (cd.getHinh() != null) {
+            ImageIcon icon = XImage.read(cd.getHinh());
+            Image img = icon.getImage();
+            Image imgScale = img.getScaledInstance(lblhinh.getWidth(), lblhinh.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaleicon = new ImageIcon(imgScale);
             lblhinh.setToolTipText(cd.getHinh());
-            lblhinh.setIcon(XImage.read(cd.getHinh()));
+            lblhinh.setIcon(scaleicon);
         }
     }
 
@@ -626,6 +631,7 @@ public class ManaObjects extends javax.swing.JFrame {
         ChuyenDe cd = new ChuyenDe();
         this.setForm(cd);
         this.row = -1;
+        this.Img();
         this.updateStatus();
     }
 

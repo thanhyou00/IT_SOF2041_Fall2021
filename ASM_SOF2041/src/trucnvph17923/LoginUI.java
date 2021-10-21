@@ -80,7 +80,7 @@ public class LoginUI extends javax.swing.JFrame {
 
         getContentPane().add(pnlogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -149,7 +149,7 @@ public class LoginUI extends javax.swing.JFrame {
         });
         jPanel2.add(btnthoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 333, 129, 40));
 
-        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel4.setBackground(new java.awt.Color(255, 153, 153));
         jPanel4.setAlignmentX(0.0F);
         jPanel4.setAlignmentY(0.0F);
 

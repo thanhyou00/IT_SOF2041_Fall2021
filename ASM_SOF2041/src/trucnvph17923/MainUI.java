@@ -67,7 +67,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblcock = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbltrangthai = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuhethong = new javax.swing.JMenu();
         mnilogin = new javax.swing.JMenuItem();
@@ -214,10 +214,10 @@ public class MainUI extends javax.swing.JFrame {
         lblcock.setText("05:06:08 PM");
         jPanel2.add(lblcock, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 0, 120, 50));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Info.png"))); // NOI18N
-        jLabel2.setText("Hệ quản lý đào tạo");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 50));
+        lbltrangthai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbltrangthai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Info.png"))); // NOI18N
+        lbltrangthai.setText("Hệ quản lý đào tạo");
+        jPanel2.add(lbltrangthai, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 1320, 50));
 
@@ -562,7 +562,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -576,6 +575,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblcock;
+    private javax.swing.JLabel lbltrangthai;
     private javax.swing.JMenuItem mnibangdiem;
     private javax.swing.JMenuItem mnichuyende;
     private javax.swing.JMenuItem mnidangxuat;
