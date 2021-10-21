@@ -218,7 +218,7 @@ public class ManaStaff extends javax.swing.JFrame {
                     .addGroup(pncapnhatLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -251,6 +251,13 @@ public class ManaStaff extends javax.swing.JFrame {
                         .addComponent(btnmoi)))
                 .addGap(25, 25, 25))
         );
+
+        pncapnhatLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txthoten, txtmanv, txtmk, txtmk2});
+
+        txtmanv.getAccessibleContext().setAccessibleName("");
+        txthoten.getAccessibleContext().setAccessibleName("");
+        txtmk.getAccessibleContext().setAccessibleName("");
+        txtmk2.getAccessibleContext().setAccessibleName("");
 
         tabs.addTab("CẬP NHẬT", pncapnhat);
 
@@ -290,7 +297,7 @@ public class ManaStaff extends javax.swing.JFrame {
             pndanhsachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pndanhsachLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

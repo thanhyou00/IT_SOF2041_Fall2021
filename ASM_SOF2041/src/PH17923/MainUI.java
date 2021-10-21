@@ -463,7 +463,7 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_mniketthucActionPerformed
 
     private void mnibangdiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnibangdiemActionPerformed
-        openThongke(WIDTH);
+        openThongke(0);
     }//GEN-LAST:event_mnibangdiemActionPerformed
 
     private void mnichuyendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnichuyendeActionPerformed
@@ -499,19 +499,19 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_mnigioithieuActionPerformed
 
     private void mnuthongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuthongkeActionPerformed
-        openThongke(WIDTH);
+       
     }//GEN-LAST:event_mnuthongkeActionPerformed
 
     private void mniluongnguoihocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniluongnguoihocActionPerformed
-        openThongke(WIDTH);
+        openThongke(1);
     }//GEN-LAST:event_mniluongnguoihocActionPerformed
 
     private void mnidiemcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnidiemcdActionPerformed
-        openThongke(WIDTH);
+        openThongke(2);
     }//GEN-LAST:event_mnidiemcdActionPerformed
 
     private void mnidoanhthuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnidoanhthuActionPerformed
-        openThongke(WIDTH);
+        openThongke(3);
     }//GEN-LAST:event_mnidoanhthuActionPerformed
 
     private void mniphanhoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniphanhoiActionPerformed
