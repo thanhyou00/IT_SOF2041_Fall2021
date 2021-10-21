@@ -64,8 +64,7 @@ public class ProgressBarUI extends javax.swing.JFrame {
         pnimg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         prgui.setBackground(new java.awt.Color(255, 255, 255));
-        prgui.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        prgui.setForeground(new java.awt.Color(0, 153, 204));
+        prgui.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         prgui.setValue(1);
         prgui.setStringPainted(true);
         pnimg.add(prgui, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 843, 28));
