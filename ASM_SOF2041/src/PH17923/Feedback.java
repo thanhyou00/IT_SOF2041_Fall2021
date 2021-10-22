@@ -259,7 +259,7 @@ public class Feedback extends javax.swing.JFrame {
 
         final String username = txtUser.getText();
         final String password = new String(txtPassword.getPassword());
-
+        // Get email API
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
@@ -287,7 +287,6 @@ public class Feedback extends javax.swing.JFrame {
                     javax.swing.JOptionPane.INFORMATION_MESSAGE
             );
         } catch (Exception e) {
-            e.printStackTrace();
             MsgBox.alert(this, "Gửi email không thành công !");
         }
     }
