@@ -99,7 +99,7 @@ public class KhoaHoc {
 
     @Override
     public String toString() {
-        return macd + " (" + ngaytao + ")";
+        return macd + " (" + ngaykhaigiang + ")";
     }
 
     
